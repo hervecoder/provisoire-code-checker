@@ -59,9 +59,32 @@ jobs:
             }
             await page.screenshot({ path: 'step-02-exam.png' });
             out.steps.push('exam');
-            // 2. Polisi category
-            const polisi = page.getByText(/polisi/i).first();
-            if (await polisi.count()) { await polisi.click({ timeout: 15000 }); await sleep(5000); }
+            // 2. Polisi category: open ng-select combobox, then pick Polisi option
+            const combo = page.locator('div[role="combobox"], .ng-input, .ng-select').first();
+            if (await combo.count()) { await combo.click({ timeout: 15000 }); await sleep(3000); }
+            await page.screenshot({ path: 'step-03-combo-open.png' });
+            const opts = page.locator('[role="option"], .ng-option, .ng-dropdown-panel .ng-option');
+            const nopt = await opts.count().catch(() => 0);
+            console.log(`combo options=${nopt}`);
+            try {
+              const dump = await opts.allInnerTexts();
+              fs.writeFileSync('options.json', JSON.stringify(dump.slice(0, 50), null, 2));
+              console.log(dump.slice(0, 20).join(' | ').slice(0, 1500));
+            } catch {}
+            let picked = false;
+            for (let i = 0; i < Math.min(nopt, 30); i++) {
+              let t = '';
+              try { t = await opts.nth(i).innerText({ timeout: 3000 }); } catch { continue; }
+              if (/polisi/i.test(t)) { await opts.nth(i).click({ timeout: 8000 }); picked = true; await sleep(5000); break; }
+            }
+            if (!picked) {
+              // fallback: click any option containing ikizamini to proceed, log it
+              for (let i = 0; i < Math.min(nopt, 30); i++) {
+                let t = '';
+                try { t = await opts.nth(i).innerText({ timeout: 3000 }); } catch { continue; }
+                if (/ikizamini/i.test(t)) { console.log('fallback pick: ' + t.slice(0, 120)); await opts.nth(i).click({ timeout: 8000 }); picked = true; await sleep(5000); break; }
+              }
+            }
             await page.screenshot({ path: 'step-03-polisi.png' });
             out.steps.push('polisi');
             // 3. Popup options: look for card / ikarita option
