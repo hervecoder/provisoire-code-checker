@@ -59,7 +59,7 @@ jobs:
             }
             await page.screenshot({ path: 'step-02-exam.png' });
             out.steps.push('exam');
-            // 2. Polisi category: open ng-select combobox, then pick Polisi option
+            // 2. Service dropdown: pick provisional computer-test option
             const combo = page.locator('div[role="combobox"], .ng-input, .ng-select').first();
             if (await combo.count()) { await combo.click({ timeout: 15000 }); await sleep(3000); }
             await page.screenshot({ path: 'step-03-combo-open.png' });
@@ -72,21 +72,20 @@ jobs:
               console.log(dump.slice(0, 20).join(' | ').slice(0, 1500));
             } catch {}
             let picked = false;
-            for (let i = 0; i < Math.min(nopt, 30); i++) {
+            for (let i = 0; i < Math.min(nopt, 40); i++) {
               let t = '';
               try { t = await opts.nth(i).innerText({ timeout: 3000 }); } catch { continue; }
-              if (/polisi/i.test(t)) { await opts.nth(i).click({ timeout: 8000 }); picked = true; await sleep(5000); break; }
+              if (/agateganyo/i.test(t) && /mudasobwa|computer|kuri mudasobwa/i.test(t)) { console.log('pick provisional: ' + t.slice(0, 150)); await opts.nth(i).click({ timeout: 8000 }); picked = true; await sleep(5000); break; }
             }
             if (!picked) {
-              // fallback: click any option containing ikizamini to proceed, log it
-              for (let i = 0; i < Math.min(nopt, 30); i++) {
+              for (let i = 0; i < Math.min(nopt, 40); i++) {
                 let t = '';
                 try { t = await opts.nth(i).innerText({ timeout: 3000 }); } catch { continue; }
-                if (/ikizamini/i.test(t)) { console.log('fallback pick: ' + t.slice(0, 120)); await opts.nth(i).click({ timeout: 8000 }); picked = true; await sleep(5000); break; }
+                if (/agateganyo/i.test(t)) { console.log('fallback provisional pick: ' + t.slice(0, 150)); await opts.nth(i).click({ timeout: 8000 }); picked = true; await sleep(5000); break; }
               }
             }
             await page.screenshot({ path: 'step-03-polisi.png' });
-            out.steps.push('polisi');
+            out.steps.push('service-picked');
             // 4. Click Saba to open service page, then enter ID there
             const saba = page.getByRole('button', { name: /saba/i }).first();
             if (await saba.count()) { await saba.click({ timeout: 15000 }); await sleep(8000); }
@@ -164,45 +163,53 @@ jobs:
               await page.screenshot({ path: 'step-08-after-genzura.png' });
             } catch (e2) { out.verify_error = String(e2.message).slice(0, 300); }
             out.steps.push('verified');
-            // 7. After verification: scroll, dump form, handle DOB/name wherever they appear
+            // 7. After verification: language Kinyarwanda, district Nyamasheke, read slots
             try {
               await page.evaluate(() => window.scrollBy(0, 800));
               await sleep(1500);
-              await page.screenshot({ path: 'step-09-after-next.png', fullPage: true });
-              const dump = await page.evaluate(() => {
-                const ins = [...document.querySelectorAll('input, select, button')].map(el => ({
-                  tag: el.tagName, type: el.type || '', name: el.name || '', ph: el.placeholder || '',
-                  label: (el.labels && el.labels[0] ? el.labels[0].innerText : '').slice(0, 80),
-                  txt: (el.innerText || '').slice(0, 80), dis: el.disabled || false, vis: el.offsetParent !== null
-                }));
-                return { url: location.href, body: document.body.innerText.slice(0, 3000), inputs: ins.slice(0, 60) };
-              });
-              fs.writeFileSync('form-dump.json', JSON.stringify(dump, null, 2));
-              console.log('FORM: ' + JSON.stringify(dump.inputs).slice(0, 2000));
-              out.applicant_text = dump.body.slice(0, 2000);
-              // DOB fill if present
-              const dob3 = page.locator('input[type="date"]').first();
-              try { if (await dob3.count() && await dob3.isVisible()) { await dob3.fill('2004-12-28', { timeout: 8000 }); out.steps.push('dob-filled'); } } catch {}
-              for (const sel of ['input[placeholder*="itariki" i]', 'input[placeholder*="amavuko" i]', 'input[placeholder*="birth" i]']) {
-                try { const dl = page.locator(sel).first(); if (await dl.count() && await dl.isVisible()) { await dl.fill(DOB, { timeout: 5000 }); out.steps.push('dob-filled'); break; } } catch {}
+              async function pickDropdown(labelPat, optionPat) {
+                const combos = page.locator('div[role="combobox"], .ng-select, .ng-input, select');
+                const nc = await combos.count().catch(() => 0);
+                for (let i = 0; i < Math.min(nc, 15); i++) {
+                  try {
+                    const c = combos.nth(i);
+                    if (!(await c.isVisible())) continue;
+                    const ctx = ((await c.innerText().catch(() => '')) + ' ' + (await page.locator('label').nth(i).innerText().catch(() => ''))).slice(0, 200);
+                    const scope = await page.evaluate((el) => el.closest('div') ? el.closest('div').parentElement.innerText.slice(0, 300) : '', await c.elementHandle().catch(() => null)).catch(() => ctx);
+                    if (!labelPat.test(ctx + ' ' + scope)) continue;
+                    const tag = await c.evaluate((el) => el.tagName).catch(() => '');
+                    if (tag === 'SELECT') {
+                      await c.selectOption({ label: optionPat }).catch(async () => {
+                        const o = c.locator('option');
+                        const n = await o.count();
+                        for (let k = 0; k < n; k++) { const t = await o.nth(k).innerText().catch(() => ''); if (optionPat.test(t)) { await c.selectOption({ index: k }); break; } }
+                      });
+                    } else {
+                      await c.click({ timeout: 8000 }); await sleep(2500);
+                      const o2 = page.locator('[role="option"], .ng-option');
+                      const n2 = await o2.count().catch(() => 0);
+                      for (let k = 0; k < Math.min(n2, 60); k++) { const t = await o2.nth(k).innerText().catch(() => ''); if (optionPat.test(t)) { await o2.nth(k).click({ timeout: 8000 }); break; } }
+                    }
+                    await sleep(3000);
+                    return true;
+                  } catch {}
+                }
+                return false;
               }
-              // empty name fields -> Herve
-              const txts = page.locator('input[type="text"]');
-              const tn = await txts.count().catch(() => 0);
-              for (let i = 0; i < Math.min(tn, 15); i++) {
-                try {
-                  const inp = txts.nth(i);
-                  if (!(await inp.isVisible())) continue;
-                  const v = await inp.inputValue().catch(() => '');
-                  const ph = (await inp.getAttribute('placeholder').catch(() => '') || '');
-                  if (!v && /izina|amazina|name/i.test(ph)) { await inp.fill(NAME, { timeout: 5000 }); }
-                } catch {}
-              }
+              await pickDropdown(/ururimi|language|ikizamini.*gikorwamo/i, /kinyarwanda/i);
+              await page.screenshot({ path: 'step-09-language.png', fullPage: true });
+              await pickDropdown(/akarere|district|region/i, /nyamasheke/i);
+              await page.screenshot({ path: 'step-10-district.png', fullPage: true });
+              const slotText = await page.evaluate(() => document.body.innerText || '');
+              out.slot_text = slotText.slice(0, 4000);
+              const m = slotText.match(/imyanya[^\n]{0,120}/gi) || slotText.match(/slots?[^\n]{0,120}/gi) || slotText.match(/nta mwanya[^\n]{0,120}/gi);
+              out.imyanya = m ? m.slice(0, 10) : [];
+              out.has_slots = /imyanya.*(irahari|ibonetse|[^n]+\d+)|available/i.test(slotText) && !/nta mwanya|nta myanya|no slot/i.test(slotText);
+              console.log('IMYANYA: ' + JSON.stringify(out.imyanya).slice(0, 800));
               const nextBtn2 = page.getByRole('button', { name: /ibikurikira/i }).first();
               try {
                 const dis = await nextBtn2.isDisabled().catch(() => null);
                 out.next_disabled = dis;
-                console.log('Ibikurikira disabled=' + dis);
                 if (dis === false) { await nextBtn2.click({ timeout: 8000 }); await sleep(8000); out.steps.push('next-clicked'); }
               } catch (eN) { out.applicant_error = String(eN.message).slice(0, 300); }
               await page.screenshot({ path: 'step-10-applicant.png', fullPage: true });
@@ -230,6 +237,8 @@ jobs:
           path: |
             step-*.png
             result.json
+            options.json
+            form-dump.json
             home-dump.html
           if-no-files-found: ignore
       - name: Save result
