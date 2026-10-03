@@ -168,15 +168,20 @@ jobs:
               await page.evaluate(() => window.scrollBy(0, 800));
               await sleep(1500);
               async function pickDropdown(labelPat, optionPat) {
-                const combos = page.locator('div[role="combobox"], .ng-select, .ng-input, select');
+                // close IremboAI widget if covering
+                try {
+                  const aiClose = page.locator('button:has-text("×"), [aria-label="Close"]').last();
+                  if (await aiClose.count() && await aiClose.isVisible()) await aiClose.click({ timeout: 3000 }).catch(() => {});
+                } catch {}
+                // try direct option text first (dropdowns render as Hitamo...)
+                const combos = page.locator('div[role="combobox"], .ng-select, .ng-input, select, div:has-text("Hitamo ururimi"), div:has-text("Hitamo akarere")');
                 const nc = await combos.count().catch(() => 0);
-                for (let i = 0; i < Math.min(nc, 15); i++) {
+                for (let i = 0; i < Math.min(nc, 20); i++) {
                   try {
                     const c = combos.nth(i);
                     if (!(await c.isVisible())) continue;
-                    const ctx = ((await c.innerText().catch(() => '')) + ' ' + (await page.locator('label').nth(i).innerText().catch(() => ''))).slice(0, 200);
-                    const scope = await page.evaluate((el) => el.closest('div') ? el.closest('div').parentElement.innerText.slice(0, 300) : '', await c.elementHandle().catch(() => null)).catch(() => ctx);
-                    if (!labelPat.test(ctx + ' ' + scope)) continue;
+                    const ctx = ((await c.innerText().catch(() => ''))).slice(0, 200);
+                    if (!labelPat.test(ctx)) continue;
                     const tag = await c.evaluate((el) => el.tagName).catch(() => '');
                     if (tag === 'SELECT') {
                       await c.selectOption({ label: optionPat }).catch(async () => {
@@ -186,19 +191,24 @@ jobs:
                       });
                     } else {
                       await c.click({ timeout: 8000 }); await sleep(2500);
-                      const o2 = page.locator('[role="option"], .ng-option');
+                      const o2 = page.locator('[role="option"], .ng-option, li, div[role="listbox"] div');
                       const n2 = await o2.count().catch(() => 0);
-                      for (let k = 0; k < Math.min(n2, 60); k++) { const t = await o2.nth(k).innerText().catch(() => ''); if (optionPat.test(t)) { await o2.nth(k).click({ timeout: 8000 }); break; } }
+                      for (let k = 0; k < Math.min(n2, 80); k++) { const t = await o2.nth(k).innerText().catch(() => ''); if (optionPat.test(t)) { await o2.nth(k).click({ timeout: 8000 }); break; } }
                     }
                     await sleep(3000);
                     return true;
                   } catch {}
                 }
+                // fallback: click Hitamo text directly
+                try {
+                  const hit = page.getByText(labelPat).first();
+                  if (await hit.count()) { await hit.click({ timeout: 8000 }); await sleep(2500); const o3 = page.getByText(optionPat).first(); if (await o3.count()) { await o3.click({ timeout: 8000 }); await sleep(3000); return true; } }
+                } catch {}
                 return false;
               }
-              await pickDropdown(/ururimi|language|ikizamini.*gikorwamo/i, /kinyarwanda/i);
+              await pickDropdown(/hitamo ururimi|ururimi ikizamini/i, /kinyarwanda/i);
               await page.screenshot({ path: 'step-09-language.png', fullPage: true });
-              await pickDropdown(/akarere|district|region/i, /nyamasheke/i);
+              await pickDropdown(/hitamo akarere|akarere/i, /nyamasheke/i);
               await page.screenshot({ path: 'step-10-district.png', fullPage: true });
               const slotText = await page.evaluate(() => document.body.innerText || '');
               out.slot_text = slotText.slice(0, 4000);
