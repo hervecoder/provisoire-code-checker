@@ -164,23 +164,49 @@ jobs:
               await page.screenshot({ path: 'step-08-after-genzura.png' });
             } catch (e2) { out.verify_error = String(e2.message).slice(0, 300); }
             out.steps.push('verified');
-            // 7. After verification: click Ibikurikira, then handle DOB/name form if shown
+            // 7. After verification: scroll, dump form, handle DOB/name wherever they appear
             try {
-              const nextBtn = page.getByRole('button', { name: /ibikurikira/i }).first();
-              if (await nextBtn.count()) { try { await nextBtn.scrollIntoViewIfNeeded({ timeout: 5000 }); } catch {} await nextBtn.click({ timeout: 8000 }); await sleep(8000); }
-              await page.screenshot({ path: 'step-09-after-next.png' });
-              const pageText = await page.evaluate(() => document.body.innerText || '');
-              // DOB on applicant form
-              const dob2 = page.locator('input[type="date"], input[placeholder*="birth" i], input[placeholder*="amavuko" i], input[placeholder*="itariki" i], input[placeholder*="28" i]').first();
-              try { if (await dob2.count() && await dob2.isVisible()) { const t = await dob2.getAttribute('type'); if (t === 'date') await dob2.fill('2004-12-28', { timeout: 8000 }); else await dob2.fill(DOB, { timeout: 8000 }); out.steps.push('dob-filled'); await sleep(1000); } } catch {}
-              // name fields on applicant form (only fill empty ones)
-              for (const pat of [/amazina/i, /izina/i, /name/i]) {
-                const nin = page.getByPlaceholder(pat).first();
-                try { if (await nin.count() && await nin.isVisible()) { const v = await nin.inputValue().catch(() => ''); if (!v) await nin.fill(NAME, { timeout: 5000 }); } } catch {}
+              await page.evaluate(() => window.scrollBy(0, 800));
+              await sleep(1500);
+              await page.screenshot({ path: 'step-09-after-next.png', fullPage: true });
+              const dump = await page.evaluate(() => {
+                const ins = [...document.querySelectorAll('input, select, button')].map(el => ({
+                  tag: el.tagName, type: el.type || '', name: el.name || '', ph: el.placeholder || '',
+                  label: (el.labels && el.labels[0] ? el.labels[0].innerText : '').slice(0, 80),
+                  txt: (el.innerText || '').slice(0, 80), dis: el.disabled || false, vis: el.offsetParent !== null
+                }));
+                return { url: location.href, body: document.body.innerText.slice(0, 3000), inputs: ins.slice(0, 60) };
+              });
+              fs.writeFileSync('form-dump.json', JSON.stringify(dump, null, 2));
+              console.log('FORM: ' + JSON.stringify(dump.inputs).slice(0, 2000));
+              out.applicant_text = dump.body.slice(0, 2000);
+              // DOB fill if present
+              const dob3 = page.locator('input[type="date"]').first();
+              try { if (await dob3.count() && await dob3.isVisible()) { await dob3.fill('2004-12-28', { timeout: 8000 }); out.steps.push('dob-filled'); } } catch {}
+              for (const sel of ['input[placeholder*="itariki" i]', 'input[placeholder*="amavuko" i]', 'input[placeholder*="birth" i]']) {
+                try { const dl = page.locator(sel).first(); if (await dl.count() && await dl.isVisible()) { await dl.fill(DOB, { timeout: 5000 }); out.steps.push('dob-filled'); break; } } catch {}
               }
-              await page.screenshot({ path: 'step-10-applicant.png' });
+              // empty name fields -> Herve
+              const txts = page.locator('input[type="text"]');
+              const tn = await txts.count().catch(() => 0);
+              for (let i = 0; i < Math.min(tn, 15); i++) {
+                try {
+                  const inp = txts.nth(i);
+                  if (!(await inp.isVisible())) continue;
+                  const v = await inp.inputValue().catch(() => '');
+                  const ph = (await inp.getAttribute('placeholder').catch(() => '') || '');
+                  if (!v && /izina|amazina|name/i.test(ph)) { await inp.fill(NAME, { timeout: 5000 }); }
+                } catch {}
+              }
+              const nextBtn2 = page.getByRole('button', { name: /ibikurikira/i }).first();
+              try {
+                const dis = await nextBtn2.isDisabled().catch(() => null);
+                out.next_disabled = dis;
+                console.log('Ibikurikira disabled=' + dis);
+                if (dis === false) { await nextBtn2.click({ timeout: 8000 }); await sleep(8000); out.steps.push('next-clicked'); }
+              } catch (eN) { out.applicant_error = String(eN.message).slice(0, 300); }
+              await page.screenshot({ path: 'step-10-applicant.png', fullPage: true });
               out.steps.push('applicant-handled');
-              out.applicant_text = pageText.slice(0, 2000);
             } catch (e3) { out.applicant_error = String(e3.message).slice(0, 300); }
             out.body_text = (await page.evaluate(() => document.body.innerText || '')).slice(0, 4000);
             console.log(out.body_text.slice(0, 1500));
