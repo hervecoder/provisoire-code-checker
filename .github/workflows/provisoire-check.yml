@@ -169,7 +169,6 @@ jobs:
               await sleep(1500);
               async function pickDropdown(labelPat, optionPat) {
                 try { await page.keyboard.press('Escape'); await sleep(800); } catch {}
-                // hide AI chat + banners that intercept clicks
                 try {
                   await page.evaluate(() => {
                     document.querySelectorAll('div').forEach(d => {
@@ -178,18 +177,22 @@ jobs:
                     });
                   });
                 } catch {}
-                // direct: click the Hitamo box, then the option
+                // scoped to registration form section only (avoid header language menu)
+                const scope = page.locator('div:has-text("Ibijyanye no kwiyandikisha")').last();
                 try {
-                  const box = page.getByText(labelPat).first();
+                  const box = scope.getByText(labelPat).first();
                   if (await box.count()) {
                     try { await box.scrollIntoViewIfNeeded({ timeout: 5000 }); } catch {}
                     await box.click({ timeout: 8000 }); await sleep(2500);
-                    const opt = page.getByText(optionPat).first();
+                    // options render in overlay; pick first matching visible option outside header
+                    const opt = page.locator('[role="option"], .ng-option, li, div[role="listbox"] div').filter({ hasText: optionPat }).first();
                     if (await opt.count()) {
                       try { await opt.scrollIntoViewIfNeeded({ timeout: 5000 }); } catch {}
                       await opt.click({ timeout: 8000 }); await sleep(3000);
                       return true;
                     }
+                    const opt2 = page.getByText(optionPat).last();
+                    if (await opt2.count()) { await opt2.click({ timeout: 8000 }); await sleep(3000); return true; }
                   }
                 } catch {}
                 // try direct option text first (dropdowns render as Hitamo...)
