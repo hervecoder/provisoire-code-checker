@@ -1,0 +1,130 @@
+name: Provisoire Code Checker
+on:
+  workflow_dispatch:
+    inputs:
+      id_number:
+        description: "ID to check (leave empty to use secret IREMBO_ID)"
+        required: false
+        default: ""
+  schedule:
+    - cron: "0 6 * * *"
+permissions:
+  contents: write
+concurrency:
+  group: provisoire-checker
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm i playwright@latest
+          npx playwright install --with-deps chromium
+      - name: Check Irembo provisoire
+        env:
+          IREMBO_ID: ${{ secrets.IREMBO_ID }}
+          INPUT_ID: ${{ inputs.id_number }}
+        run: |
+          cat > check.mjs << 'CHECK_EOF'
+          import { chromium } from 'playwright';
+          import fs from 'node:fs';
+          const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+          const ID = (process.env.INPUT_ID || process.env.IREMBO_ID || '').trim();
+          if (!ID) { console.error('Missing ID: set secret IREMBO_ID or dispatch input id_number'); process.exit(1); }
+          console.log(`Checking ID ending ...${ID.slice(-4)}`);
+          const browser = await chromium.launch({ headless: true, args: ['--no-sandbox','--disable-dev-shm-usage'] });
+          const ctx = await browser.newContext({ locale: 'rw-RW', viewport: { width: 1280, height: 900 }, timezoneId: 'Africa/Kigali', userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36' });
+          const page = await ctx.newPage();
+          const out = { started_at: new Date().toISOString(), steps: [] };
+          try {
+            await page.goto('https://irembo.gov.rw/', { waitUntil: 'networkidle', timeout: 90000 });
+            await sleep(4000);
+            await page.screenshot({ path: 'step-01-home.png' });
+            out.steps.push('home');
+            // 1. Find "Kwiyandikisha gukora ikizamini" link/button
+            const examLink = page.getByText(/kwiyandikisha.*kizamini/i).first();
+            if (await examLink.count()) { await examLink.click({ timeout: 15000 }); await sleep(5000); }
+            else {
+              // fallback: direct search in page text dump for debugging
+              const t = (await page.content()).slice(0, 5000);
+              fs.writeFileSync('home-dump.html', t);
+              throw new Error('exam link not found - see step-01-home.png');
+            }
+            await page.screenshot({ path: 'step-02-exam.png' });
+            out.steps.push('exam');
+            // 2. Polisi category
+            const polisi = page.getByText(/polisi/i).first();
+            if (await polisi.count()) { await polisi.click({ timeout: 15000 }); await sleep(5000); }
+            await page.screenshot({ path: 'step-03-polisi.png' });
+            out.steps.push('polisi');
+            // 3. Popup options: look for card / ikarita option
+            for (const pat of [/ikarito/i, /card/i, /gukora.*kizamini/i]) {
+              const el = page.getByText(pat).first();
+              try { if (await el.count() && await el.isVisible()) { await el.click({ timeout: 8000 }); await sleep(4000); break; } } catch {}
+            }
+            await page.screenshot({ path: 'step-04-popup.png' });
+            out.steps.push('popup');
+            // 4. ID input: find input near ID text
+            let typed = false;
+            for (const sel of ['input[name*="id" i]', 'input[placeholder*="ID" i]', 'input[type="text"]']) {
+              const inputs = page.locator(sel);
+              const n = await inputs.count().catch(() => 0);
+              for (let i = 0; i < Math.min(n, 10); i++) {
+                try {
+                  const inp = inputs.nth(i);
+                  if (await inp.isVisible()) { await inp.fill(ID, { timeout: 8000 }); typed = true; break; }
+                } catch {}
+              }
+              if (typed) break;
+            }
+            if (!typed) throw new Error('ID input not found - see step-04-popup.png');
+            await sleep(1500);
+            await page.screenshot({ path: 'step-05-id-filled.png' });
+            out.steps.push('id-filled');
+            // 5. Proceed / Komeza button
+            for (const pat of [/komeza/i, /proceed/i, /continue/i, /next/i, /ohereza/i]) {
+              const b = page.getByRole('button', { name: pat }).first();
+              try { if (await b.count() && await b.isVisible() && await b.isEnabled()) { await b.click({ timeout: 8000 }); typed = true; await sleep(6000); break; } } catch {}
+            }
+            await page.screenshot({ path: 'step-06-result.png' });
+            out.steps.push('result');
+            out.body_text = (await page.evaluate(() => document.body.innerText || '')).slice(0, 4000);
+            console.log(out.body_text.slice(0, 1500));
+          } catch (e) {
+            out.error = String(e.message).slice(0, 500);
+            console.error('CHECK FAILED:', e.message);
+            try { await page.screenshot({ path: 'step-ERR.png' }); } catch {}
+          } finally {
+            out.finished_at = new Date().toISOString();
+            fs.writeFileSync('result.json', JSON.stringify(out, null, 2));
+            await browser.close();
+          }
+          CHECK_EOF
+          node --check check.mjs && echo "syntax OK"
+          node check.mjs
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: provisoire-debug
+          path: |
+            step-*.png
+            result.json
+            home-dump.html
+          if-no-files-found: ignore
+      - name: Save result
+        if: always()
+        run: |
+          if [ -f result.json ]; then
+            git config user.name "provisoire-bot"
+            git config user.email "provisoire-bot@users.noreply.github.com"
+            git add result.json || true
+            git diff --staged --quiet || (git commit -m "check $(date -u +%FT%TZ)" && git push)
+          fi
