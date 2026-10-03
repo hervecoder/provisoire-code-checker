@@ -177,14 +177,25 @@ jobs:
                     });
                   });
                 } catch {}
-                // scoped to registration form section only (avoid header language menu)
-                const scope = page.locator('div:has-text("Ibijyanye no kwiyandikisha")').last();
+                // label-anchored: find "Ururimi..."/"Akarere" label, click ng-select in same row
                 try {
-                  const info = await page.evaluate(() => {
-                    const els = [...document.querySelectorAll('*')].filter(e => /hitamo (ururimi|akarere)/i.test(e.innerText || '') && e.children.length <= 3);
-                    return els.slice(0, 10).map(e => ({ tag: e.tagName, cls: (e.className || '').toString().slice(0, 100), txt: (e.innerText || '').slice(0, 80) }));
-                  });
-                  console.log('HITAMO candidates: ' + JSON.stringify(info).slice(0, 1000));
+                  const labels = page.locator('label, span, div');
+                  const nl = await labels.count().catch(() => 0);
+                  for (let i = 0; i < Math.min(nl, 400); i++) {
+                    let t = '';
+                    try { t = await labels.nth(i).innerText({ timeout: 1000 }); } catch { continue; }
+                    if (!labelPat.test(t) || t.length > 60) continue;
+                    try {
+                      const row = labels.nth(i).locator('xpath=ancestor::div[ng-select or .//ng-select][1]');
+                      const sel = row.locator('ng-select, .ng-select').first();
+                      const target = (await sel.count()) ? sel : page.locator('ng-select').nth(i % 5);
+                      await target.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+                      await target.click({ timeout: 8000 }); await sleep(2500);
+                      const o = page.locator('.ng-option').filter({ hasText: optionPat }).first();
+                      if (await o.count()) { await o.click({ timeout: 8000 }); await sleep(3000); return true; }
+                      await page.keyboard.press('Escape');
+                    } catch {}
+                  }
                 } catch {}
                 try {
                   const box = scope.getByText(labelPat).first();
@@ -289,4 +300,5 @@ jobs:
             git add result.json || true
             git diff --staged --quiet || (git commit -m "check $(date -u +%FT%TZ)" && git push)
           fi
+
 
