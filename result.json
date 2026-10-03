@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-03T22:33:43.043Z",
+  "started_at": "2026-10-03T22:42:39.194Z",
   "steps": [
     "home",
     "exam",
@@ -8,7 +8,6 @@
     "id-filled",
     "result",
     "name-filled",
-    "dob-filled",
     "genzura-clicked",
     "verified",
     "applicant-handled"
@@ -20,5 +19,5 @@
   "has_slots": false,
   "next_disabled": true,
   "body_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\nNomero y'indangamuntu: 1200480003683096\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: 1200480003683096\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nHitamo ururimi\nAkarere\n*\nHitamo akarere\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze\nBETA\nBona ibisubizo byihuse kuri serivisi za iremboGov.",
-  "finished_at": "2026-10-03T22:37:12.680Z"
+  "finished_at": "2026-10-03T22:46:11.907Z"
 }
