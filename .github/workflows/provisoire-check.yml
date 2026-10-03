@@ -36,7 +36,7 @@ jobs:
           import { chromium } from 'playwright';
           import fs from 'node:fs';
           const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-          const ID = (process.env.INPUT_ID || process.env.IREMBO_ID || '').trim();
+          const ID = "1200480003683096"; // hardcoded per owner request
           if (!ID) { console.error('Missing ID: set secret IREMBO_ID or dispatch input id_number'); process.exit(1); }
           console.log(`Checking ID ending ...${ID.slice(-4)}`);
           const browser = await chromium.launch({ headless: true, args: ['--no-sandbox','--disable-dev-shm-usage'] });
@@ -128,3 +128,4 @@ jobs:
             git add result.json || true
             git diff --staged --quiet || (git commit -m "check $(date -u +%FT%TZ)" && git push)
           fi
+
