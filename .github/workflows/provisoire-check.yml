@@ -168,15 +168,30 @@ jobs:
               await page.evaluate(() => window.scrollBy(0, 800));
               await sleep(1500);
               async function pickDropdown(labelPat, optionPat) {
-                // dismiss overlays: Escape + minimize IremboAI widget
                 try { await page.keyboard.press('Escape'); await sleep(800); } catch {}
+                // hide AI chat + banners that intercept clicks
                 try {
-                  const toggle = page.locator('button:has-text("Ohereza")').first();
-                  // widget header toggle (v arrow) near iremboAI
-                  const minBtn = page.locator('div:has-text("iremboAI") svg, div:has-text("iremboAI") button').last();
-                  if (await minBtn.count() && await minBtn.isVisible()) await minBtn.click({ timeout: 3000 }).catch(() => {});
+                  await page.evaluate(() => {
+                    document.querySelectorAll('div').forEach(d => {
+                      const t = (d.innerText || '').slice(0, 60);
+                      if (/Muraho!Ngufashe|Bona ibisubizo byihuse/i.test(t) && d.offsetParent) { d.style.display = 'none'; }
+                    });
+                  });
                 } catch {}
-                try { await page.evaluate(() => { document.querySelectorAll('iframe').forEach(f => { try { f.style.display='none'; } catch {} }); }); } catch {}
+                // direct: click the Hitamo box, then the option
+                try {
+                  const box = page.getByText(labelPat).first();
+                  if (await box.count()) {
+                    try { await box.scrollIntoViewIfNeeded({ timeout: 5000 }); } catch {}
+                    await box.click({ timeout: 8000 }); await sleep(2500);
+                    const opt = page.getByText(optionPat).first();
+                    if (await opt.count()) {
+                      try { await opt.scrollIntoViewIfNeeded({ timeout: 5000 }); } catch {}
+                      await opt.click({ timeout: 8000 }); await sleep(3000);
+                      return true;
+                    }
+                  }
+                } catch {}
                 // try direct option text first (dropdowns render as Hitamo...)
                 const combos = page.locator('div[role="combobox"], .ng-select, .ng-input, select, div:has-text("Hitamo ururimi"), div:has-text("Hitamo akarere")');
                 const nc = await combos.count().catch(() => 0);
