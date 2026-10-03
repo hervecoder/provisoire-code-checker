@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-03T20:59:05.349Z",
+  "started_at": "2026-10-03T21:02:42.952Z",
   "steps": [
     "home",
     "exam",
@@ -8,12 +8,13 @@
     "id-filled",
     "result",
     "name-filled",
+    "dob-filled",
     "genzura-clicked",
     "verified"
   ],
   "after_saba_url": "https://irembo.gov.rw/user/citizen/service/rnp/registration_for_driving_license_test_supplementary",
   "after_saba_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\nKwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze",
   "applicant_error": "locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: /ibikurikira/i }).first()\n    - locator resolved to <button disabled type=\"button\" id=\"next_btn\" matsteppernext=\"\" class=\"mat-stepper-next float-right btn btn-primary ml-2 top-button\"> Ibikurikira </button>",
-  "body_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\nKwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\n Nomero ya Perimi yabuze. (Mwahamagara abashinzwe gutanga ubufasha mukabaha iyi code: 0aced893719f354d)\nNomero y'indangamuntu\n*\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze",
-  "finished_at": "2026-10-03T21:00:01.425Z"
+  "body_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\nKwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\n Nomero ya Perimi yabuze. (Mwahamagara abashinzwe gutanga ubufasha mukabaha iyi code: d92dcafc17522d54)\nNomero y'indangamuntu\n*\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze",
+  "finished_at": "2026-10-03T21:03:39.766Z"
 }
