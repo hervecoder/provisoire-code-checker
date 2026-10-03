@@ -1,15 +1,18 @@
 {
-  "started_at": "2026-10-03T19:28:29.501Z",
+  "started_at": "2026-10-03T20:50:35.846Z",
   "steps": [
     "home",
     "exam",
     "polisi",
     "popup",
     "id-filled",
-    "result"
+    "result",
+    "name-filled",
+    "verified"
   ],
   "after_saba_url": "https://irembo.gov.rw/user/citizen/service/rnp/registration_for_driving_license_test_supplementary",
   "after_saba_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\nKwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze",
+  "verify_error": "locator.click: Timeout 8000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: /genzura/i }).first()\n    - locator resolved to <button disabled _ngcontent-dqt-c217=\"\" class=\"btn btn-primary\">…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and ",
   "body_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\nKwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\nTuri gushaka amakuru y'irangamuntu\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze\nGusuzuma\n\nIremboGov irashaka kugenzura niba ufite uruhushya rwa nyir'icyangombwa. Byemeze utanga rimwe mu mazina ya nyir'icyangombwa nk'uko bigaragara ku ndangamuntu.\n\nRimwe mu mazina (rimwe gusa)\nNemeye amategeko agenga imikoreshereze\nGenzura",
-  "finished_at": "2026-10-03T19:29:07.162Z"
+  "finished_at": "2026-10-03T20:51:28.060Z"
 }
