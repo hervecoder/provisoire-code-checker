@@ -1,0 +1,9 @@
+{
+  "started_at": "2026-10-03T19:16:49.355Z",
+  "steps": [
+    "home",
+    "exam"
+  ],
+  "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByText(/polisi/i).first()\n    - locator resolved to <h2 class=\"home-title ng-tns-c255-1\">Polisi</h2>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div role=\"combobox\" class=\"ng-input\" aria-expanded=\"false\" aria-haspopup=\"listbox\">…</div> from <div class=\"cdk-overlay-container\">…",
+  "finished_at": "2026-10-03T19:17:27.926Z"
+}
