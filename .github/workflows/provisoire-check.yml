@@ -87,14 +87,16 @@ jobs:
             }
             await page.screenshot({ path: 'step-03-polisi.png' });
             out.steps.push('polisi');
-            // 3. Popup options: look for card / ikarita option
-            for (const pat of [/ikarito/i, /card/i, /gukora.*kizamini/i]) {
-              const el = page.getByText(pat).first();
-              try { if (await el.count() && await el.isVisible()) { await el.click({ timeout: 8000 }); await sleep(4000); break; } } catch {}
-            }
+            // 4. Click Saba to open service page, then enter ID there
+            const saba = page.getByRole('button', { name: /saba/i }).first();
+            if (await saba.count()) { await saba.click({ timeout: 15000 }); await sleep(8000); }
             await page.screenshot({ path: 'step-04-popup.png' });
             out.steps.push('popup');
-            // 4. ID input: find input near ID text
+            out.after_saba_url = page.url();
+            out.after_saba_text = (await page.evaluate(() => document.body.innerText || '')).slice(0, 2000);
+            console.log('after Saba: ' + out.after_saba_url);
+            console.log(out.after_saba_text.slice(0, 1000));
+            // 5. ID input on service page
             let typed = false;
             for (const sel of ['input[name*="id" i]', 'input[placeholder*="ID" i]', 'input[type="text"]']) {
               const inputs = page.locator(sel);
