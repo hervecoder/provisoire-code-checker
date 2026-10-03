@@ -1,9 +1,13 @@
 {
-  "started_at": "2026-10-03T19:16:49.355Z",
+  "started_at": "2026-10-03T19:24:34.337Z",
   "steps": [
     "home",
-    "exam"
+    "exam",
+    "polisi",
+    "popup",
+    "id-filled",
+    "result"
   ],
-  "error": "locator.click: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByText(/polisi/i).first()\n    - locator resolved to <h2 class=\"home-title ng-tns-c255-1\">Polisi</h2>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div role=\"combobox\" class=\"ng-input\" aria-expanded=\"false\" aria-haspopup=\"listbox\">…</div> from <div class=\"cdk-overlay-container\">…",
-  "finished_at": "2026-10-03T19:17:27.926Z"
+  "body_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nMurakaza neza\n\nSerivisi ziboneka ku rubuga IremboGov rwavuguruwe\n\nSura urubuga IremboGov rwavuguruwe hashingiwe ku bitekerezo mwaduhaye! Tubafitiye n’ibindi bishya bigamije kuborohereza gusaba serivisi za leta!\n\nFungura\nSerivisi ntiyabonetse\n\nIshakisha ryawe nta serivisi n'imwe bihuye\n\nIbitekerezo:\n\nReba neza ko amagambo yose yanditse neza. Gerageza gukoresha amagambo-shingiro rusange. Gerageza gukoresha amagambo-shingiro make\n\nInjiza Ibyahindutse\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze\nKwiyandikisha gukora ikizamini cyo gutwara ibinyabiziga\nKwiyandikisha gukora ikizamini cy'uruhushya rw'icyiciro kisumbuye\n\nIbyerekeye iyi serivisi\n\nIyi serivisi ifasha abayikoresha gusaba ngo bahabwe uruhushya rw'icyiciro kisumbuye batsindiye.\n\nKanda hano kumenya amakuru kuri iyi serivisi.\n\nIgihe dosiye imara : Umunsi 1 Igiciro: KirahindukaYatanzwe na : RNP\nSaba",
+  "finished_at": "2026-10-03T19:25:11.583Z"
 }
