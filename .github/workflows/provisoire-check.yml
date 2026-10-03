@@ -168,11 +168,15 @@ jobs:
               await page.evaluate(() => window.scrollBy(0, 800));
               await sleep(1500);
               async function pickDropdown(labelPat, optionPat) {
-                // close IremboAI widget if covering
+                // dismiss overlays: Escape + minimize IremboAI widget
+                try { await page.keyboard.press('Escape'); await sleep(800); } catch {}
                 try {
-                  const aiClose = page.locator('button:has-text("×"), [aria-label="Close"]').last();
-                  if (await aiClose.count() && await aiClose.isVisible()) await aiClose.click({ timeout: 3000 }).catch(() => {});
+                  const toggle = page.locator('button:has-text("Ohereza")').first();
+                  // widget header toggle (v arrow) near iremboAI
+                  const minBtn = page.locator('div:has-text("iremboAI") svg, div:has-text("iremboAI") button').last();
+                  if (await minBtn.count() && await minBtn.isVisible()) await minBtn.click({ timeout: 3000 }).catch(() => {});
                 } catch {}
+                try { await page.evaluate(() => { document.querySelectorAll('iframe').forEach(f => { try { f.style.display='none'; } catch {} }); }); } catch {}
                 // try direct option text first (dropdowns render as Hitamo...)
                 const combos = page.locator('div[role="combobox"], .ng-select, .ng-input, select, div:has-text("Hitamo ururimi"), div:has-text("Hitamo akarere")');
                 const nc = await combos.count().catch(() => 0);
@@ -199,10 +203,10 @@ jobs:
                     return true;
                   } catch {}
                 }
-                // fallback: click Hitamo text directly
+                // fallback: click Hitamo text directly (scroll into view first)
                 try {
                   const hit = page.getByText(labelPat).first();
-                  if (await hit.count()) { await hit.click({ timeout: 8000 }); await sleep(2500); const o3 = page.getByText(optionPat).first(); if (await o3.count()) { await o3.click({ timeout: 8000 }); await sleep(3000); return true; } }
+                  if (await hit.count()) { try { await hit.scrollIntoViewIfNeeded({ timeout: 5000 }); } catch {} await hit.click({ timeout: 8000 }); await sleep(2500); const o3 = page.getByText(optionPat).first(); if (await o3.count()) { try { await o3.scrollIntoViewIfNeeded({ timeout: 5000 }); } catch {} await o3.click({ timeout: 8000 }); await sleep(3000); return true; } }
                 } catch {}
                 return false;
               }
