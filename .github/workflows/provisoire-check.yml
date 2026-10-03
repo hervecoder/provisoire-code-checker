@@ -114,12 +114,50 @@ jobs:
             await page.screenshot({ path: 'step-05-id-filled.png' });
             out.steps.push('id-filled');
             // 5. Proceed / Komeza button
-            for (const pat of [/komeza/i, /proceed/i, /continue/i, /next/i, /ohereza/i]) {
+            for (const pat of [/ibikurikira/i, /komeza/i, /proceed/i, /continue/i, /next/i, /ohereza/i]) {
               const b = page.getByRole('button', { name: pat }).first();
               try { if (await b.count() && await b.isVisible() && await b.isEnabled()) { await b.click({ timeout: 8000 }); typed = true; await sleep(6000); break; } } catch {}
             }
             await page.screenshot({ path: 'step-06-result.png' });
             out.steps.push('result');
+            // 6. Gusuzuma popup: name + terms + Genzura, plus DOB if asked
+            const NAME = "Herve";
+            const DOB = "28/12/2004"; // dd/mm/yyyy
+            try {
+              const nameInput = page.getByPlaceholder(/rimwe.*mazina|injiza.*mazina/i).first();
+              if (await nameInput.count()) { await nameInput.fill(NAME, { timeout: 8000 }); await sleep(1000); out.steps.push('name-filled'); }
+              else {
+                const allInputs = page.locator('input[type="text"]');
+                const nn = await allInputs.count().catch(() => 0);
+                for (let i = 0; i < Math.min(nn, 10); i++) {
+                  try {
+                    const inp = allInputs.nth(i);
+                    if (await inp.isVisible()) { const v = await inp.inputValue().catch(() => ''); if (!v) { await inp.fill(NAME, { timeout: 5000 }); out.steps.push('name-filled'); break; } }
+                  } catch {}
+                }
+              }
+              // DOB if present: text or date input
+              const dobSel = page.locator('input[type="date"], input[placeholder*="birth" i], input[placeholder*="amavuko" i], input[placeholder*="itariki" i]');
+              if (await dobSel.count()) {
+                const d = dobSel.first();
+                try {
+                  if (await d.isVisible()) {
+                    const typ = await d.getAttribute('type');
+                    if (typ === 'date') { const [dd, mm, yyyy] = DOB.split('/'); await d.fill(`${yyyy}-${mm}-${dd}`, { timeout: 8000 }); }
+                    else await d.fill(DOB, { timeout: 8000 });
+                    out.steps.push('dob-filled');
+                  }
+                } catch {}
+              }
+              await page.screenshot({ path: 'step-07-verify-filled.png' });
+              // terms checkbox
+              const chk = page.locator('input[type="checkbox"]').first();
+              try { if (await chk.count() && !(await chk.isChecked().catch(() => true))) await chk.check({ timeout: 5000 }); } catch {}
+              const genzura = page.getByRole('button', { name: /genzura/i }).first();
+              if (await genzura.count()) { await genzura.click({ timeout: 8000 }); await sleep(8000); out.steps.push('genzura-clicked'); }
+              await page.screenshot({ path: 'step-08-after-genzura.png' });
+            } catch (e2) { out.verify_error = String(e2.message).slice(0, 300); }
+            out.steps.push('verified');
             out.body_text = (await page.evaluate(() => document.body.innerText || '')).slice(0, 4000);
             console.log(out.body_text.slice(0, 1500));
           } catch (e) {
