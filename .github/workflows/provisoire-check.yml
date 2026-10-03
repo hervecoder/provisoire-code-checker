@@ -248,14 +248,24 @@ jobs:
               }
               await pickDropdown(/hitamo ururimi|ururimi ikizamini/i, /kinyarwanda/i);
               await page.screenshot({ path: 'step-09-language.png', fullPage: true });
-              await pickDropdown(/hitamo akarere|akarere/i, /nyamasheke/i);
-              await page.screenshot({ path: 'step-10-district.png', fullPage: true });
-              const slotText = await page.evaluate(() => document.body.innerText || '');
-              out.slot_text = slotText.slice(0, 4000);
-              const m = slotText.match(/imyanya[^\n]{0,120}/gi) || slotText.match(/slots?[^\n]{0,120}/gi) || slotText.match(/nta mwanya[^\n]{0,120}/gi);
-              out.imyanya = m ? m.slice(0, 10) : [];
-              out.has_slots = /imyanya.*(irahari|ibonetse|[^n]+\d+)|available/i.test(slotText) && !/nta mwanya|nta myanya|no slot/i.test(slotText);
-              console.log('IMYANYA: ' + JSON.stringify(out.imyanya).slice(0, 800));
+              out.districts = {};
+              for (const dist of [/nyamasheke/i, /nyarugenge/i]) {
+                const dname = dist.source.replace(/\/|\\/gi, '').replace(/\^|\$/g, '');
+                try {
+                  await pickDropdown(/hitamo akarere|akarere/i, dist);
+                  await sleep(2000);
+                  await page.screenshot({ path: `step-10-district-${dname}.png`, fullPage: true });
+                  const slotText = await page.evaluate(() => document.body.innerText || '').catch(() => '');
+                  const m = slotText.match(/imyanya[^\n]{0,120}/gi) || slotText.match(/nta mwanya[^\n]{0,120}/gi) || [];
+                  const rows = [...slotText.matchAll(/(\d{2}-\d{2}-\d{4})[^\n]{0,80}?\n?[^\n]{0,80}?Imyanya\s*(\d+)/gi)].slice(0, 12).map(x => ({ date: x[1], slots: x[2], line: x[0].slice(0, 120) }));
+                  out.districts[dname] = { imyanya: m.slice(0, 10), rows, has_slots: rows.length > 0, text: slotText.slice(0, 1500) };
+                  console.log(dname + ' IMYANYA rows=' + rows.length);
+                } catch (eD) { out.districts[dname] = { error: String(eD.message).slice(0, 200) }; }
+              }
+              const first = out.districts['nyamasheke'] || {};
+              out.slot_text = first.text || '';
+              out.imyanya = first.imyanya || [];
+              out.has_slots = !!first.has_slots;
               const nextBtn2 = page.getByRole('button', { name: /ibikurikira/i }).first();
               try {
                 const dis = await nextBtn2.isDisabled().catch(() => null);
