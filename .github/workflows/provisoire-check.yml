@@ -150,9 +150,15 @@ jobs:
                 } catch {}
               }
               await page.screenshot({ path: 'step-07-verify-filled.png' });
-              // terms checkbox
-              const chk = page.locator('input[type="checkbox"]').first();
-              try { if (await chk.count() && !(await chk.isChecked().catch(() => true))) await chk.check({ timeout: 5000 }); } catch {}
+              // terms checkbox - custom control, click label text
+              try {
+                const lbl = page.getByText(/nemeye/i).first();
+                if (await lbl.count()) { await lbl.click({ timeout: 5000 }); await sleep(1000); }
+              } catch {}
+              try {
+                const chk2 = page.locator('input[type="checkbox"]').first();
+                if (await chk2.count()) { try { await chk2.check({ force: true, timeout: 5000 }); } catch { try { await chk2.click({ force: true, timeout: 5000 }); } catch {} } }
+              } catch {}
               const genzura = page.getByRole('button', { name: /genzura/i }).first();
               if (await genzura.count()) { await genzura.click({ timeout: 8000 }); await sleep(8000); out.steps.push('genzura-clicked'); }
               await page.screenshot({ path: 'step-08-after-genzura.png' });
