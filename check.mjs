@@ -1,0 +1,450 @@
+// Irembo provisoire (provisional driving-licence computer test) slot checker.
+//
+// Drives the Irembo citizen portal with Playwright, walks the provisional
+// computer-test service for each target district, and writes the observed
+// exam slots to result.json. Run by .github/workflows/provisoire-check.yml.
+//
+// District slots are read from the rendered page text; result.json is the raw
+// capture that the Cloudflare Worker (provisoire-slots) turns into the public
+// page.
+import { chromium } from 'playwright';
+import fs from 'node:fs';
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// ID defaults to the owner's number; override with the IREMBO_ID secret or a
+// workflow_dispatch id_number input when needed.
+const DEFAULT_ID = '1200480003683096';
+const ID = (process.env.INPUT_ID || process.env.IREMBO_ID || DEFAULT_ID).trim();
+
+const DISTRICTS = [
+  { key: 'nyamasheke', re: /nyamasheke/i },
+  { key: 'nyarugenge', re: /nyarugenge/i },
+  { key: 'kicukiro', re: /kicukiro/i },
+];
+
+const NAME = 'Herve';
+const DOB = '28/12/2004'; // dd/mm/yyyy
+
+if (!ID) {
+  console.error('Missing ID: set secret IREMBO_ID or dispatch input id_number');
+  process.exit(1);
+}
+console.log(`Checking ID ending ...${ID.slice(-4)}`);
+
+const browser = await chromium.launch({
+  headless: true,
+  args: ['--no-sandbox', '--disable-dev-shm-usage'],
+});
+const ctx = await browser.newContext({
+  locale: 'rw-RW',
+  viewport: { width: 1280, height: 900 },
+  timezoneId: 'Africa/Kigali',
+  userAgent:
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+});
+const page = await ctx.newPage();
+const out = { started_at: new Date().toISOString(), steps: [] };
+
+try {
+  await page.goto('https://irembo.gov.rw/', { waitUntil: 'networkidle', timeout: 90000 });
+  await sleep(4000);
+  await page.screenshot({ path: 'step-01-home.png' });
+  out.steps.push('home');
+
+  // 1. Find "Kwiyandikisha gukora ikizamini" link/button
+  const examLink = page.getByText(/kwiyandikisha.*kizamini/i).first();
+  if (await examLink.count()) {
+    await examLink.click({ timeout: 15000 });
+    await sleep(5000);
+  } else {
+    fs.writeFileSync('home-dump.html', (await page.content()).slice(0, 5000));
+    throw new Error('exam link not found - see step-01-home.png');
+  }
+  await page.screenshot({ path: 'step-02-exam.png' });
+  out.steps.push('exam');
+
+  // 2. Service dropdown: pick the provisional computer-test option
+  const combo = page.locator('div[role="combobox"], .ng-input, .ng-select').first();
+  if (await combo.count()) {
+    await combo.click({ timeout: 15000 });
+    await sleep(3000);
+  }
+  await page.screenshot({ path: 'step-03-combo-open.png' });
+
+  const opts = page.locator('[role="option"], .ng-option, .ng-dropdown-panel .ng-option');
+  const nopt = await opts.count().catch(() => 0);
+  console.log(`combo options=${nopt}`);
+  try {
+    const dump = await opts.allInnerTexts();
+    fs.writeFileSync('options.json', JSON.stringify(dump.slice(0, 50), null, 2));
+    console.log(dump.slice(0, 20).join(' | ').slice(0, 1500));
+  } catch {}
+
+  let picked = false;
+  for (let i = 0; i < Math.min(nopt, 40); i++) {
+    let t = '';
+    try {
+      t = await opts.nth(i).innerText({ timeout: 3000 });
+    } catch {
+      continue;
+    }
+    if (/agateganyo/i.test(t) && /mudasobwa|computer|kuri mudasobwa/i.test(t)) {
+      console.log('pick provisional: ' + t.slice(0, 150));
+      await opts.nth(i).click({ timeout: 8000 });
+      picked = true;
+      await sleep(5000);
+      break;
+    }
+  }
+  if (!picked) {
+    for (let i = 0; i < Math.min(nopt, 40); i++) {
+      let t = '';
+      try {
+        t = await opts.nth(i).innerText({ timeout: 3000 });
+      } catch {
+        continue;
+      }
+      if (/agateganyo/i.test(t)) {
+        console.log('fallback provisional pick: ' + t.slice(0, 150));
+        await opts.nth(i).click({ timeout: 8000 });
+        picked = true;
+        await sleep(5000);
+        break;
+      }
+    }
+  }
+  await page.screenshot({ path: 'step-03-polisi.png' });
+  out.steps.push('service-picked');
+
+  // 3. Click Saba to open the service page, then enter the ID there
+  const saba = page.getByRole('button', { name: /saba/i }).first();
+  if (await saba.count()) {
+    await saba.click({ timeout: 15000 });
+    await sleep(8000);
+  }
+  await page.screenshot({ path: 'step-04-popup.png' });
+  out.steps.push('popup');
+  out.after_saba_url = page.url();
+  out.after_saba_text = (await page.evaluate(() => document.body.innerText || '')).slice(0, 2000);
+  console.log('after Saba: ' + out.after_saba_url);
+  console.log(out.after_saba_text.slice(0, 1000));
+
+  // 4. ID input on the service page
+  let typed = false;
+  for (const sel of ['input[name*="id" i]', 'input[placeholder*="ID" i]', 'input[type="text"]']) {
+    const inputs = page.locator(sel);
+    const n = await inputs.count().catch(() => 0);
+    for (let i = 0; i < Math.min(n, 10); i++) {
+      try {
+        const inp = inputs.nth(i);
+        if (await inp.isVisible()) {
+          await inp.fill(ID, { timeout: 8000 });
+          typed = true;
+          break;
+        }
+      } catch {}
+    }
+    if (typed) break;
+  }
+  if (!typed) throw new Error('ID input not found - see step-04-popup.png');
+  await sleep(1500);
+  await page.screenshot({ path: 'step-05-id-filled.png' });
+  out.steps.push('id-filled');
+
+  // 5. Proceed / Komeza button
+  for (const pat of [/ibikurikira/i, /komeza/i, /proceed/i, /continue/i, /next/i, /ohereza/i]) {
+    const b = page.getByRole('button', { name: pat }).first();
+    try {
+      if ((await b.count()) && (await b.isVisible()) && (await b.isEnabled())) {
+        await b.click({ timeout: 8000 });
+        await sleep(6000);
+        break;
+      }
+    } catch {}
+  }
+  await page.screenshot({ path: 'step-06-result.png' });
+  out.steps.push('result');
+
+  // 6. Gusuzuma popup: name + terms + Genzura, plus DOB if asked
+  try {
+    const nameInput = page.getByPlaceholder(/rimwe.*mazina|injiza.*mazina/i).first();
+    if (await nameInput.count()) {
+      await nameInput.fill(NAME, { timeout: 8000 });
+      await sleep(1000);
+      out.steps.push('name-filled');
+    } else {
+      const allInputs = page.locator('input[type="text"]');
+      const nn = await allInputs.count().catch(() => 0);
+      for (let i = 0; i < Math.min(nn, 10); i++) {
+        try {
+          const inp = allInputs.nth(i);
+          if (await inp.isVisible()) {
+            const v = await inp.inputValue().catch(() => '');
+            if (!v) {
+              await inp.fill(NAME, { timeout: 5000 });
+              out.steps.push('name-filled');
+              break;
+            }
+          }
+        } catch {}
+      }
+    }
+
+    // DOB if present: text or date input
+    const dobSel = page.locator(
+      'input[type="date"], input[placeholder*="birth" i], input[placeholder*="amavuko" i], input[placeholder*="itariki" i]',
+    );
+    if (await dobSel.count()) {
+      const d = dobSel.first();
+      try {
+        if (await d.isVisible()) {
+          const typ = await d.getAttribute('type');
+          if (typ === 'date') {
+            const [dd, mm, yyyy] = DOB.split('/');
+            await d.fill(`${yyyy}-${mm}-${dd}`, { timeout: 8000 });
+          } else {
+            await d.fill(DOB, { timeout: 8000 });
+          }
+          out.steps.push('dob-filled');
+        }
+      } catch {}
+    }
+    await page.screenshot({ path: 'step-07-verify-filled.png' });
+
+    // terms checkbox - custom control, click label text
+    try {
+      const lbl = page.getByText(/nemeye/i).first();
+      if (await lbl.count()) {
+        await lbl.click({ timeout: 5000 });
+        await sleep(1000);
+      }
+    } catch {}
+    try {
+      const chk2 = page.locator('input[type="checkbox"]').first();
+      if (await chk2.count()) {
+        try {
+          await chk2.check({ force: true, timeout: 5000 });
+        } catch {
+          try {
+            await chk2.click({ force: true, timeout: 5000 });
+          } catch {}
+        }
+      }
+    } catch {}
+
+    const genzura = page.getByRole('button', { name: /genzura/i }).first();
+    if (await genzura.count()) {
+      await genzura.click({ timeout: 8000 });
+      await sleep(8000);
+      out.steps.push('genzura-clicked');
+    }
+    await page.screenshot({ path: 'step-08-after-genzura.png' });
+  } catch (e2) {
+    out.verify_error = String(e2.message).slice(0, 300);
+  }
+  out.steps.push('verified');
+
+  // 7. After verification: language Kinyarwanda, then each district's slots
+  try {
+    await page.evaluate(() => window.scrollBy(0, 800));
+    await sleep(1500);
+
+    async function pickDropdown(labelPat, optionPat) {
+      try {
+        await page.keyboard.press('Escape');
+        await sleep(800);
+      } catch {}
+      // hide the help/chat overlays that intercept clicks
+      try {
+        await page.evaluate(() => {
+          document.querySelectorAll('div').forEach((d) => {
+            const t = (d.innerText || '').slice(0, 60);
+            if (/Muraho!Ngufashe|Bona ibisubizo byihuse/i.test(t) && d.offsetParent) {
+              d.style.display = 'none';
+            }
+          });
+        });
+      } catch {}
+
+      // label-anchored: find the "Ururimi..."/"Akarere" label, click ng-select in the same row
+      try {
+        const labels = page.locator('label, span, div');
+        const nl = await labels.count().catch(() => 0);
+        for (let i = 0; i < Math.min(nl, 400); i++) {
+          let t = '';
+          try {
+            t = await labels.nth(i).innerText({ timeout: 1000 });
+          } catch {
+            continue;
+          }
+          if (!labelPat.test(t) || t.length > 60) continue;
+          try {
+            const row = labels.nth(i).locator('xpath=ancestor::div[ng-select or .//ng-select][1]');
+            const sel = row.locator('ng-select, .ng-select').first();
+            const target = (await sel.count()) ? sel : page.locator('ng-select').nth(i % 5);
+            await target.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+            await target.click({ timeout: 8000 });
+            await sleep(2500);
+            const o = page.locator('.ng-option').filter({ hasText: optionPat }).first();
+            if (await o.count()) {
+              await o.click({ timeout: 8000 });
+              await sleep(3000);
+              return true;
+            }
+            await page.keyboard.press('Escape');
+          } catch {}
+        }
+      } catch {}
+
+      try {
+        const box = page.getByText(labelPat).first();
+        if (await box.count()) {
+          try {
+            await box.scrollIntoViewIfNeeded({ timeout: 5000 });
+          } catch {}
+          await box.click({ timeout: 8000 });
+          await sleep(2500);
+          const opt = page
+            .locator('[role="option"], .ng-option, li, div[role="listbox"] div')
+            .filter({ hasText: optionPat })
+            .first();
+          if (await opt.count()) {
+            try {
+              await opt.scrollIntoViewIfNeeded({ timeout: 5000 });
+            } catch {}
+            await opt.click({ timeout: 8000 });
+            await sleep(3000);
+            return true;
+          }
+          const opt2 = page.getByText(optionPat).last();
+          if (await opt2.count()) {
+            await opt2.click({ timeout: 8000 });
+            await sleep(3000);
+            return true;
+          }
+        }
+      } catch {}
+
+      // try direct option text first (dropdowns render as Hitamo...)
+      const combos = page.locator(
+        'div[role="combobox"], .ng-select, .ng-input, select, div:has-text("Hitamo ururimi"), div:has-text("Hitamo akarere")',
+      );
+      const nc = await combos.count().catch(() => 0);
+      for (let i = 0; i < Math.min(nc, 20); i++) {
+        try {
+          const c = combos.nth(i);
+          if (!(await c.isVisible())) continue;
+          const ctext = (await c.innerText().catch(() => '')).slice(0, 200);
+          if (!labelPat.test(ctext)) continue;
+          const tag = await c.evaluate((el) => el.tagName).catch(() => '');
+          if (tag === 'SELECT') {
+            await c.selectOption({ label: optionPat }).catch(async () => {
+              const o = c.locator('option');
+              const n = await o.count();
+              for (let k = 0; k < n; k++) {
+                const t = await o.nth(k).innerText().catch(() => '');
+                if (optionPat.test(t)) {
+                  await c.selectOption({ index: k });
+                  break;
+                }
+              }
+            });
+          } else {
+            await c.click({ timeout: 8000 });
+            await sleep(2500);
+            const o2 = page.locator('[role="option"], .ng-option, li, div[role="listbox"] div');
+            const n2 = await o2.count().catch(() => 0);
+            for (let k = 0; k < Math.min(n2, 80); k++) {
+              const t = await o2.nth(k).innerText().catch(() => '');
+              if (optionPat.test(t)) {
+                await o2.nth(k).click({ timeout: 8000 });
+                break;
+              }
+            }
+          }
+          await sleep(3000);
+          return true;
+        } catch {}
+      }
+
+      // fallback: click the label text directly (scroll into view first)
+      try {
+        const hit = page.getByText(labelPat).first();
+        if (await hit.count()) {
+          try {
+            await hit.scrollIntoViewIfNeeded({ timeout: 5000 });
+          } catch {}
+          await hit.click({ timeout: 8000 });
+          await sleep(2500);
+          const o3 = page.getByText(optionPat).first();
+          if (await o3.count()) {
+            try {
+              await o3.scrollIntoViewIfNeeded({ timeout: 5000 });
+            } catch {}
+            await o3.click({ timeout: 8000 });
+            await sleep(3000);
+            return true;
+          }
+        }
+      } catch {}
+      return false;
+    }
+
+    await pickDropdown(/hitamo ururimi|ururimi ikizamini/i, /kinyarwanda/i);
+    await page.screenshot({ path: 'step-09-language.png', fullPage: true });
+
+    out.districts = {};
+    for (const { key, re } of DISTRICTS) {
+      try {
+        await pickDropdown(/hitamo akarere|akarere/i, re);
+        await sleep(2000);
+        await page.screenshot({ path: `step-10-district-${key}.png`, fullPage: true });
+        const slotText = await page.evaluate(() => document.body.innerText || '').catch(() => '');
+        const m = slotText.match(/imyanya[^\n]{0,120}/gi) || slotText.match(/nta mwanya[^\n]{0,120}/gi) || [];
+        const rows = [...slotText.matchAll(/(\d{2}-\d{2}-\d{4})[^\n]{0,80}?\n?[^\n]{0,80}?Imyanya\s*(\d+)/gi)]
+          .slice(0, 12)
+          .map((x) => ({ date: x[1], slots: x[2], line: x[0].slice(0, 120) }));
+        out.districts[key] = { imyanya: m.slice(0, 10), rows, has_slots: rows.length > 0, text: slotText.slice(0, 1500) };
+        console.log(`${key} IMYANYA rows=${rows.length}`);
+      } catch (eD) {
+        out.districts[key] = { error: String(eD.message).slice(0, 200) };
+      }
+    }
+
+    const first = out.districts.nyamasheke || {};
+    out.slot_text = first.text || '';
+    out.imyanya = first.imyanya || [];
+    out.has_slots = !!first.has_slots;
+
+    const nextBtn2 = page.getByRole('button', { name: /ibikurikira/i }).first();
+    try {
+      const dis = await nextBtn2.isDisabled().catch(() => null);
+      out.next_disabled = dis;
+      if (dis === false) {
+        await nextBtn2.click({ timeout: 8000 });
+        await sleep(8000);
+        out.steps.push('next-clicked');
+      }
+    } catch (eN) {
+      out.applicant_error = String(eN.message).slice(0, 300);
+    }
+    await page.screenshot({ path: 'step-10-applicant.png', fullPage: true });
+    out.steps.push('applicant-handled');
+  } catch (e3) {
+    out.applicant_error = String(e3.message).slice(0, 300);
+  }
+
+  out.body_text = (await page.evaluate(() => document.body.innerText || '')).slice(0, 4000);
+  console.log(out.body_text.slice(0, 1500));
+} catch (e) {
+  out.error = String(e.message).slice(0, 500);
+  console.error('CHECK FAILED:', e.message);
+  try {
+    await page.screenshot({ path: 'step-ERR.png' });
+  } catch {}
+} finally {
+  out.finished_at = new Date().toISOString();
+  fs.writeFileSync('result.json', JSON.stringify(out, null, 2));
+  await browser.close();
+}
