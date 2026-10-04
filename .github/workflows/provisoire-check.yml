@@ -56,6 +56,8 @@ jobs:
         if: always()
         run: |
           mkdir -p shots
+          # drop last run's shots so a failed run shows a placeholder, not a stale image
+          rm -f shots/*.png
           for d in nyamasheke nyarugenge kicukiro; do
             f="step-10-district-${d}.png"
             [ -f "$f" ] && cp "$f" "shots/${d}.png"
