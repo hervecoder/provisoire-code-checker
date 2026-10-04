@@ -301,13 +301,19 @@ jobs:
             form-dump.json
             home-dump.html
           if-no-files-found: ignore
-      - name: Save result
+      - name: Save result + shots
         if: always()
         run: |
+          mkdir -p shots
+          for d in nyamasheke nyarugenge; do
+            f=$(ls step-10-district-${d}.png 2>/dev/null || ls step-10-district*.png 2>/dev/null | head -1)
+            [ -n "$f" ] && cp "$f" "shots/${d}.png"
+          done
+          [ -f step-10-applicant.png ] && cp step-10-applicant.png shots/latest.png || true
           if [ -f result.json ]; then
             git config user.name "provisoire-bot"
             git config user.email "provisoire-bot@users.noreply.github.com"
-            git add result.json || true
+            git add result.json shots/nyamasheke.png shots/nyarugenge.png shots/latest.png || true
             git diff --staged --quiet || (git commit -m "check $(date -u +%FT%TZ)" && git push)
           fi
 
