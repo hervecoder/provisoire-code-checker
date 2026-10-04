@@ -249,7 +249,7 @@ jobs:
               await pickDropdown(/hitamo ururimi|ururimi ikizamini/i, /kinyarwanda/i);
               await page.screenshot({ path: 'step-09-language.png', fullPage: true });
               out.districts = {};
-              for (const dist of [/nyamasheke/i, /nyarugenge/i]) {
+              for (const dist of [/nyamasheke/i, /nyarugenge/i, /kicukiro/i]) {
                 const dname = dist.source.replace(/\/|\\/gi, '').replace(/\^|\$/g, '');
                 try {
                   await pickDropdown(/hitamo akarere|akarere/i, dist);
@@ -305,7 +305,7 @@ jobs:
         if: always()
         run: |
           mkdir -p shots
-          for d in nyamasheke nyarugenge; do
+          for d in nyamasheke nyarugenge kicukiro; do
             f=$(ls step-10-district-${d}.png 2>/dev/null || ls step-10-district*.png 2>/dev/null | head -1)
             [ -n "$f" ] && cp "$f" "shots/${d}.png"
           done
@@ -313,7 +313,7 @@ jobs:
           if [ -f result.json ]; then
             git config user.name "provisoire-bot"
             git config user.email "provisoire-bot@users.noreply.github.com"
-            git add result.json shots/nyamasheke.png shots/nyarugenge.png shots/latest.png || true
+            git add result.json shots/nyamasheke.png shots/nyarugenge.png shots/kicukiro.png shots/latest.png || true
             git diff --staged --quiet || (git commit -m "check $(date -u +%FT%TZ)" && git push)
           fi
 
