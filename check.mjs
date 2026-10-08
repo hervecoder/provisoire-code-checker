@@ -78,34 +78,49 @@ async function runType(typeCfg) {
 
   // Viewport-clipped district screenshot: scroll the slot table into view,
   // then cut the top 30% (applicant/ID header) so the ID never ships.
+  // NOTE: clipping alone is NOT enough — the applicant block sits mid-page.
+  // So first scrub the ID out of the DOM (inputs + summary spans), then take
+  // a full-page shot: slots fully visible, ID nowhere.
   async function clippedDistrictShot(key) {
     try {
-      await page.evaluate(() => {
-        const cands = [...document.querySelectorAll('*')];
-        const el = cands.find(
-          (e) =>
-            /imyanya/i.test(e.innerText || '') &&
-            (e.innerText || '').length > 40 &&
-            (e.innerText || '').length < 6000,
-        );
-        if (el) el.scrollIntoView({ block: 'center' });
-        else window.scrollBy(0, 600);
-      });
-      await sleep(900);
-      const vp = page.viewportSize() || { width: 1280, height: 900 };
-      const cut = Math.round(vp.height * 0.3);
-      await page.screenshot({
-        path: `step-10-${typeKey}-district-${key}.png`,
-        clip: { x: 0, y: cut, width: vp.width, height: vp.height - cut },
-      });
+      await page.evaluate((idNum) => {
+        // 1) Blank any input holding a long digit string (the ID field).
+        document.querySelectorAll('input').forEach((inp) => {
+          try {
+            const v = inp.value || '';
+            if (v.replace(/\D/g, '').length >= 10) inp.value = '';
+          } catch {}
+        });
+        // 2) Hide small elements whose text contains the ID.
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
+        let el = null;
+        const hide = [];
+        while ((el = walker.nextNode())) {
+          try {
+            const t = el.innerText || '';
+            if (t && t.includes(idNum) && t.length < 3000) hide.push(el);
+          } catch {}
+        }
+        hide.forEach((e) => {
+          e.style.display = 'none';
+        });
+        // 3) Hide the whole applicant summary card (Amakuru Y'usaba block).
+        document.querySelectorAll('*').forEach((e) => {
+          try {
+            const t = e.innerText || '';
+            if (/Amakuru Y['’]usaba/.test(t) && t.length < 600) {
+              let p = e;
+              for (let i = 0; i < 4 && p; i++) p = p.parentElement;
+              if (p && p.style) p.style.display = 'none';
+            }
+          } catch {}
+        });
+      }, ID);
+      await sleep(700);
+      await page.screenshot({ path: `step-10-${typeKey}-district-${key}.png`, fullPage: true });
       return true;
     } catch {
-      try {
-        await page.screenshot({ path: `step-10-${typeKey}-district-${key}.png` });
-        return true;
-      } catch {
-        return false;
-      }
+      return false;
     }
   }
 
