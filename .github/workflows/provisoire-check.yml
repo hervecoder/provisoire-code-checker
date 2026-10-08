@@ -7,8 +7,11 @@ on:
         description: "ID to check (leave empty to use secret IREMBO_ID or the default)"
         required: false
         default: ""
-  schedule:
-    - cron: "*/30 * * * *"
+  # Scheduled runs PAUSED for now: Irembo times out GitHub runners, and empty
+  # runs must never overwrite good data. Re-enable (e.g. hourly) once green
+  # runs are consistent again.
+  # schedule:
+  #   - cron: "*/30 * * * *"
 
 permissions:
   contents: write
@@ -55,6 +58,18 @@ jobs:
       - name: Save result + shots
         if: always()
         run: |
+          # NEVER overwrite good data with an empty capture: if no district
+          # produced rows, fail loudly and keep the previous commit.
+          # NEVER overwrite good data with an empty capture: re-parse each
+          # district's raw text with the worker-grade pattern (check.mjs's own
+          # rows field uses a narrower pattern and is NOT the source of truth).
+          # Zero parsed rows anywhere = fail loudly, keep the previous commit.
+          DATA_ROWS=$(node -e "const j=require('./result.json');const re=/(\d{2}-\d{2}-\d{4})\s*\n([^\n]+)\n([^\n]*?\d{1,2}:\d{2}\s*(?:AM|PM)[^\n]*)\n(?:Imyanya|Umwanya)\s*\n(\d+)/gi;let n=0;for(const t of ['mudasobwa','impapuro']){const D=(j.types&&j.types[t]&&j.types[t].districts)||{};for(const k of Object.keys(D)){const txt=((D[k]||{}).text)||'';let m;re.lastIndex=0;while((m=re.exec(txt))){n++;if(n>=1)break;}if(n>=1)break;}if(n>=1)break;}console.log(n)")
+          if [ "$DATA_ROWS" = "0" ]; then
+            echo "no slot rows captured — refusing to overwrite good data"
+            exit 1
+          fi
+          mkdir -p shots
           mkdir -p shots
           # drop last run's shots so a failed run shows a placeholder, not a stale image
           rm -f shots/*.png
