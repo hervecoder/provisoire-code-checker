@@ -71,9 +71,15 @@ jobs:
           if [ -f result.json ]; then
             git config user.name "provisoire-bot"
             git config user.email "provisoire-bot@users.noreply.github.com"
-            # Rebase first: parallel pushes (manual commits, retries) otherwise
-            # reject the push with non-fast-forward.
-            git pull --rebase origin main || true
+            # Commit FIRST (always succeeds), then rebase onto any parallel
+            # push (manual commits, retries) and push. The old order (pull
+            # before commit) died on "unstaged changes" and lost the data.
             git add -A result.json shots || true
-            git diff --staged --quiet || (git commit -m "check $(date -u +%FT%TZ)" && git push)
+            if git diff --staged --quiet; then
+              echo "no changes to save"
+            else
+              git commit -m "check $(date -u +%FT%TZ)"
+              git pull --rebase origin main || true
+              git push origin HEAD:main
+            fi
           fi
