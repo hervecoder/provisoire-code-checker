@@ -8,7 +8,7 @@ on:
         required: false
         default: ""
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "*/30 * * * *"
 
 permissions:
   contents: write
