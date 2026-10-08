@@ -20,7 +20,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -58,11 +58,16 @@ jobs:
           mkdir -p shots
           # drop last run's shots so a failed run shows a placeholder, not a stale image
           rm -f shots/*.png
-          for d in nyamasheke nyarugenge kicukiro; do
-            f="step-10-district-${d}.png"
+          for d in bugesera burera gakenke gasabo gatsibo gicumbi gisagara huye kamonyi karongi kayonza kicukiro kirehe muhanga musanze ngoma ngororero nyabihu nyagatare nyamagabe nyamasheke nyanza nyarugenge nyaruguru rubavu ruhango rulindo rusizi rutsiro rwamagana; do
+            # mudasobwa (default) shot
+            f="step-10-mudasobwa-district-${d}.png"
             [ -f "$f" ] && cp "$f" "shots/${d}.png"
+            # impapuro shot (suffixed; worker serves it with ?t=impapuro)
+            f2="step-10-impapuro-district-${d}.png"
+            [ -f "$f2" ] && cp "$f2" "shots/${d}-impapuro.png"
           done
-          [ -f step-10-applicant.png ] && cp step-10-applicant.png shots/latest.png || true
+          # NOTE: step-10-*-applicant.png is deliberately NOT committed — it can
+          # contain the applicant ID number. Debug artifacts stay in Actions only.
           if [ -f result.json ]; then
             git config user.name "provisoire-bot"
             git config user.email "provisoire-bot@users.noreply.github.com"
