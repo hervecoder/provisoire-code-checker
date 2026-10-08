@@ -452,12 +452,30 @@ async function runType(typeCfg) {
         try {
           await pickDropdown(/hitamo akarere|akarere/i, re);
           await sleep(2000);
+          // Verify the district actually switched: the page must name it.
+          // Otherwise every district would capture the same default view with
+          // copy-paste counts (seen once: identical totals across districts).
+          let slotProbe = await page.evaluate(() => document.body.innerText || '').catch(() => '');
+          if (!new RegExp(key, 'i').test(slotProbe)) {
+            await pickDropdown(/hitamo akarere|akarere/i, re);
+            await sleep(2000);
+            slotProbe = await page.evaluate(() => document.body.innerText || '').catch(() => '');
+          }
+          if (!new RegExp(key, 'i').test(slotProbe)) {
+            out.districts[key] = { error: 'district did not switch (page shows another district)' };
+            console.log(`[${typeKey}] ${key} SKIPPED: district not switched`);
+            continue;
+          }
           await clippedDistrictShot(key);
           const slotText = await page.evaluate(() => document.body.innerText || '').catch(() => '');
           const m = slotText.match(/imyanya[^\n]{0,120}/gi) || slotText.match(/nta mwanya[^\n]{0,120}/gi) || [];
-          const rows = [...slotText.matchAll(/(\d{2}-\d{2}-\d{4})[^\n]{0,80}?\n?[^\n]{0,80}?Imyanya\s*(\d+)/gi)]
-            .slice(0, 12)
-            .map((x) => ({ date: x[1], slots: x[2], line: x[0].slice(0, 120) }));
+          // Worker-grade row pattern (date/center/time/count across lines).
+          const rows = [];
+          const rowRe = /(\d{2}-\d{2}-\d{4})\s*\n([^\n]+)\n([^\n]*?\d{1,2}:\d{2}\s*(?:AM|PM)[^\n]*)\n(?:Imyanya|Umwanya)\s*\n(\d+)/gi;
+          let rm;
+          while ((rm = rowRe.exec(slotText)) && rows.length < 20) {
+            rows.push({ date: rm[1], center: rm[2].trim(), time: rm[3].trim(), slots: Number(rm[4]) });
+          }
           out.districts[key] = { imyanya: m.slice(0, 10), rows, has_slots: rows.length > 0, text: scrub(slotText).slice(0, 1500) };
           console.log(`[${typeKey}] ${key} IMYANYA rows=${rows.length}`);
         } catch (eD) {
