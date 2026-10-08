@@ -48,8 +48,8 @@ jobs:
           path: |
             step-*.png
             result.json
-            options.json
-            home-dump.html
+            options-*.json
+            home-dump-*.html
           if-no-files-found: ignore
 
       - name: Save result + shots
@@ -71,6 +71,9 @@ jobs:
           if [ -f result.json ]; then
             git config user.name "provisoire-bot"
             git config user.email "provisoire-bot@users.noreply.github.com"
+            # Rebase first: parallel pushes (manual commits, retries) otherwise
+            # reject the push with non-fast-forward.
+            git pull --rebase origin main || true
             git add -A result.json shots || true
             git diff --staged --quiet || (git commit -m "check $(date -u +%FT%TZ)" && git push)
           fi
