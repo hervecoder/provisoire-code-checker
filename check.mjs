@@ -41,7 +41,8 @@ const EXAM_TYPES = [
   },
   {
     key: 'impapuro',
-    serviceRes: [/agateganyo/i, /impapuro|paper/i],
+    // Irembo writes it as one word "kumpapuro" — /mpapuro/ matches both spellings.
+    serviceRes: [/agateganyo/i, /mpapuro/i],
     fallbackRes: null, // no fallback: a mudasobwa pick must never masquerade as impapuro
   },
 ];
