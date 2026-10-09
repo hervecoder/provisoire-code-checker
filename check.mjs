@@ -473,6 +473,36 @@ async function runType(typeCfg) {
       await pickDropdown(/hitamo ururimi|ururimi ikizamini/i, /kinyarwanda/i);
       await page.screenshot({ path: `${tag('09-language')}.png`, fullPage: true });
 
+      // Dump the Akarere dropdown options: the TRUE per-type district list
+      // straight from Irembo (options-districts-<type>.json, uploaded as artifact).
+      // Tells missing centers apart from flaky picks.
+      try {
+        const combosD = page.locator('div[role="combobox"], .ng-select, .ng-input, select');
+        const ncd = await combosD.count().catch(() => 0);
+        for (let i = 0; i < Math.min(ncd, 20); i++) {
+          try {
+            const c = combosD.nth(i);
+            if (!(await c.isVisible().catch(() => false))) continue;
+            const ctext = (await c.innerText().catch(() => '')).slice(0, 200);
+            if (!/hitamo akarere|akarere/i.test(ctext)) continue;
+            await c.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+            await c.click({ timeout: 8000 });
+            await sleep(2500);
+            const oo = page.locator('.ng-option, [role="option"]');
+            const no = await oo.count().catch(() => 0);
+            const names = [];
+            for (let k = 0; k < Math.min(no, 60); k++) {
+              try { names.push((await oo.nth(k).innerText({ timeout: 2000 })).trim()); } catch {}
+            }
+            fs.writeFileSync(`options-districts-${typeKey}.json`, JSON.stringify(names, null, 2));
+            console.log(`[${typeKey}] district options (${names.length}): ` + names.join(' | ').slice(0, 1200));
+            break;
+          } catch {}
+        }
+        await page.keyboard.press('Escape').catch(() => {});
+        await sleep(800);
+      } catch {}
+
       out.districts = {};
       for (const { key, re } of DISTRICTS) {
         try {
