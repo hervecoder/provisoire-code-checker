@@ -268,7 +268,7 @@ async function runType(typeCfg) {
             if (await inp.isVisible()) {
               const v = await inp.inputValue().catch(() => '');
               if (!v) {
-                await inp.fill(NAME, { timeout: 5000 });
+                await inp.fill(NAME, { timeout: 2500 });
                 out.steps.push('name-filled');
                 break;
               }
@@ -302,7 +302,7 @@ async function runType(typeCfg) {
       try {
         const lbl = page.getByText(/nemeye/i).first();
         if (await lbl.count()) {
-          await lbl.click({ timeout: 5000 });
+          await lbl.click({ timeout: 2500 });
           await sleep(1000);
         }
       } catch {}
@@ -336,6 +336,27 @@ async function runType(typeCfg) {
       await page.evaluate(() => window.scrollBy(0, 800));
       await sleep(1500);
 
+      // Wait until the slot page settles after a pick: poll body text until
+      // stable twice in a row (max ~20s). Adapts to slow Irembo XHR without
+      // fixed long sleeps, and outlasts spinner overlays that swallow clicks.
+      async function settleSlots() {
+        try {
+          let last = '';
+          let stable = 0;
+          for (let i = 0; i < 20; i++) {
+            await sleep(1000);
+            const cur = await page.evaluate(() => document.body.innerText || '').catch(() => '');
+            if (cur === last) {
+              stable += 1;
+              if (stable >= 2) break;
+            } else {
+              stable = 0;
+              last = cur;
+            }
+          }
+        } catch {}
+      }
+
       async function pickDropdown(labelPat, optionPat) {
         try {
           await page.keyboard.press('Escape');
@@ -357,10 +378,10 @@ async function runType(typeCfg) {
         try {
           const labels = page.locator('label, span, div');
           const nl = await labels.count().catch(() => 0);
-          for (let i = 0; i < Math.min(nl, 400); i++) {
+          for (let i = 0; i < Math.min(nl, 200); i++) {
             let t = '';
             try {
-              t = await labels.nth(i).innerText({ timeout: 1000 });
+              t = await labels.nth(i).innerText({ timeout: 300 });
             } catch {
               continue;
             }
@@ -369,13 +390,13 @@ async function runType(typeCfg) {
               const row = labels.nth(i).locator('xpath=ancestor::div[ng-select or .//ng-select][1]');
               const sel = row.locator('ng-select, .ng-select').first();
               const target = (await sel.count()) ? sel : page.locator('ng-select').nth(i % 5);
-              await target.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+              await target.scrollIntoViewIfNeeded({ timeout: 2500 }).catch(() => {});
               await target.click({ timeout: 8000 });
               await sleep(2500);
               const o = page.locator('.ng-option').filter({ hasText: optionPat }).first();
               if (await o.count()) {
                 await o.click({ timeout: 8000 });
-                await sleep(3000);
+                await settleSlots();
                 return true;
               }
               await page.keyboard.press('Escape');
@@ -387,7 +408,7 @@ async function runType(typeCfg) {
           const box = page.getByText(labelPat).first();
           if (await box.count()) {
             try {
-              await box.scrollIntoViewIfNeeded({ timeout: 5000 });
+              await box.scrollIntoViewIfNeeded({ timeout: 2500 });
             } catch {}
             await box.click({ timeout: 8000 });
             await sleep(2500);
@@ -397,10 +418,10 @@ async function runType(typeCfg) {
               .first();
             if (await opt.count()) {
               try {
-                await opt.scrollIntoViewIfNeeded({ timeout: 5000 });
+                await opt.scrollIntoViewIfNeeded({ timeout: 2500 });
               } catch {}
               await opt.click({ timeout: 8000 });
-              await sleep(3000);
+              await settleSlots();
               return true;
             }
             const opt2 = page.getByText(optionPat).last();
@@ -429,7 +450,7 @@ async function runType(typeCfg) {
                 const o = c.locator('option');
                 const n = await o.count();
                 for (let k = 0; k < n; k++) {
-                  const t = await o.nth(k).innerText().catch(() => '');
+                  const t = await o.nth(k).innerText({ timeout: 500 }).catch(() => '');
                   if (optionPat.test(t)) {
                     await c.selectOption({ index: k });
                     break;
@@ -442,14 +463,14 @@ async function runType(typeCfg) {
               const o2 = page.locator('[role="option"], .ng-option, li, div[role="listbox"] div');
               const n2 = await o2.count().catch(() => 0);
               for (let k = 0; k < Math.min(n2, 80); k++) {
-                const t = await o2.nth(k).innerText().catch(() => '');
+                const t = await o2.nth(k).innerText({ timeout: 500 }).catch(() => '');
                 if (optionPat.test(t)) {
                   await o2.nth(k).click({ timeout: 8000 });
                   break;
                 }
               }
             }
-            await sleep(3000);
+            await settleSlots();
             return true;
           } catch {}
         }
@@ -459,17 +480,17 @@ async function runType(typeCfg) {
           const hit = page.getByText(labelPat).first();
           if (await hit.count()) {
             try {
-              await hit.scrollIntoViewIfNeeded({ timeout: 5000 });
+              await hit.scrollIntoViewIfNeeded({ timeout: 2500 });
             } catch {}
             await hit.click({ timeout: 8000 });
             await sleep(2500);
             const o3 = page.getByText(optionPat).first();
             if (await o3.count()) {
               try {
-                await o3.scrollIntoViewIfNeeded({ timeout: 5000 });
+                await o3.scrollIntoViewIfNeeded({ timeout: 2500 });
               } catch {}
               await o3.click({ timeout: 8000 });
-              await sleep(3000);
+              await settleSlots();
               return true;
             }
           }
@@ -492,7 +513,7 @@ async function runType(typeCfg) {
             if (!(await c.isVisible().catch(() => false))) continue;
             const ctext = (await c.innerText().catch(() => '')).slice(0, 200);
             if (!/hitamo akarere|akarere/i.test(ctext)) continue;
-            await c.scrollIntoViewIfNeeded({ timeout: 5000 }).catch(() => {});
+            await c.scrollIntoViewIfNeeded({ timeout: 2500 }).catch(() => {});
             await c.click({ timeout: 8000 });
             await sleep(2500);
             const oo = page.locator('.ng-option, [role="option"]');
@@ -533,6 +554,7 @@ async function runType(typeCfg) {
             slotProbe = await page.evaluate(() => document.body.innerText || '').catch(() => '');
           }
           if (!new RegExp(key, 'i').test(slotProbe)) {
+            await page.screenshot({ path: `step-10-${typeKey}-district-${key}-MISS.png`, fullPage: true }).catch(() => {});
             out.districts[key] = { error: 'district did not switch (page shows another district)' };
             console.log(`[${typeKey}] ${key} SKIPPED: district not switched`);
             continue;
