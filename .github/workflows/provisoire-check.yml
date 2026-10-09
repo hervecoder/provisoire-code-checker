@@ -8,14 +8,16 @@ on:
         required: false
         default: ""
       district:
-        description: "Single district to test (leave empty for full 30-district sweep)"
+        description: "Single district to test (leave empty for full verified sweep)"
         required: false
         default: ""
-  # Scheduled runs PAUSED for now: Irembo times out GitHub runners, and empty
-  # runs must never overwrite good data. Re-enable (e.g. hourly) once green
-  # runs are consistent again.
-  # schedule:
-  #   - cron: "*/30 * * * *"
+  # Daytime auto-runs (Kigali = UTC+2): 09:00 + 15:00 Kigali. 2x30min/day
+  # fits the 2000 free Actions min/month. Night runs capture zeros and waste
+  # minutes, so there is no night cron and the night-gate step skips full
+  # sweeps outside 05:00-20:00 Kigali. Empty captures never overwrite good
+  # data (rows gate in the save step).
+  schedule:
+    - cron: "0 7,13 * * *"
 
 permissions:
   contents: write
@@ -36,12 +38,31 @@ jobs:
         with:
           node-version: 20
 
+      - name: Night gate (full sweep only)
+        id: gate
+        run: |
+          if [ -n "${INPUT_DISTRICT:-}" ]; then
+            echo "go=true" >> $GITHUB_OUTPUT
+            echo "single-district test — always runs"
+            exit 0
+          fi
+          H=$(TZ=Africa/Kigali date +%-H)
+          if [ "$H" -lt 5 ] || [ "$H" -ge 20 ]; then
+            echo "go=false" >> $GITHUB_OUTPUT
+            echo "Kigali ${H}h at night — Irembo shows no slots. Skipping (not a failure)."
+          else
+            echo "go=true" >> $GITHUB_OUTPUT
+            echo "Kigali ${H}h daytime — proceeding."
+          fi
+
       - name: Install Playwright
+        if: steps.gate.outputs.go == 'true'
         run: |
           npm i playwright@latest --no-save
           npx playwright install --with-deps chromium
 
       - name: Check Irembo provisoire slots
+        if: steps.gate.outputs.go == 'true'
         env:
           IREMBO_ID: ${{ secrets.IREMBO_ID }}
           INPUT_ID: ${{ inputs.id_number }}
@@ -62,6 +83,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Save result + shots
+        if: steps.gate.outputs.go == 'true'
         run: |
           # Single-district test runs never touch committed data: results stay
           # in the debug artifacts for inspection only.
@@ -97,15 +119,34 @@ jobs:
           if [ -f result.json ]; then
             git config user.name "provisoire-bot"
             git config user.email "provisoire-bot@users.noreply.github.com"
-            # Commit FIRST (always succeeds), then rebase onto any parallel
-            # push (manual commits, retries) and push. The old order (pull
-            # before commit) died on "unstaged changes" and lost the data.
+            # Fresh capture always wins conflicts (merge -X ours): a queued
+            # run holds newer data than whatever landed while it was working.
             git add -A result.json shots || true
             if git diff --staged --quiet; then
               echo "no changes to save"
             else
               git commit -m "check $(date -u +%FT%TZ)"
-              git pull --rebase origin main || true
-              git push origin HEAD:main
+              git fetch origin main || true
+              git merge -X ours origin/main -m "merge latest capture" 2>/dev/null || true
+              for i in 1 2 3; do git push origin HEAD:main && break || sleep 10; done
+              git status -sb | head -3 && git log origin/main -1 --format=%H | grep -q "$(git rev-parse HEAD)" && echo "pushed OK" || exit 1
             fi
           fi
+
+      - name: Run summary
+        if: always()
+        run: |
+          node -e 'const fs=require("fs");try{const j=JSON.parse(fs.readFileSync("./result.json","utf8"));let s="## Provisoire check "+(j.finished_at||"unknown")+"\n";for(const t of ["mudasobwa","impapuro"]){const D=(j.types&&j.types[t]&&j.types[t].districts)||{};const ks=Object.keys(D);const has=ks.filter(k=>(D[k].rows||[]).length>0);const err=ks.filter(k=>D[k].error);s+="\n**"+t+"**: "+has.length+" with slots, "+err.length+" errors / "+ks.length+" checked"+(err.length?" ("+err.join(", ")+")":"")+"\n";}fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,s);}catch(e){}' || true
+
+      - name: Verify live worker serves fresh data
+        if: ${{ inputs.district == '' && steps.gate.outputs.go == 'true' }}
+        run: |
+          TODAY=$(date -u +%F)
+          for i in $(seq 1 10); do
+            GOT=$(curl -s --max-time 20 "https://provisoire-slots.ndatimanah.workers.dev/api/health" || true)
+            echo "try $i: $GOT"
+            echo "$GOT" | grep -q "$TODAY" && { echo "worker is fresh"; exit 0; }
+            sleep 30
+          done
+          echo "WARNING: worker not fresh yet — check /api/health later"
+          exit 0
