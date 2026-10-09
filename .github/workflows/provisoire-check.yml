@@ -84,7 +84,7 @@ jobs:
           mkdir -p shots
           # drop last run's shots so a failed run shows a placeholder, not a stale image
           rm -f shots/*.png
-          for d in bugesera burera gakenke gasabo gatsibo gicumbi gisagara huye kamonyi karongi kayonza kicukiro kirehe muhanga musanze ngoma ngororero nyabihu nyagatare nyamagabe nyamasheke nyanza nyarugenge nyaruguru rubavu ruhango rulindo rusizi rutsiro rwamagana; do
+          for d in bugesera gicumbi gisagara huye karongi kayonza kicukiro kirehe muhanga musanze ngoma ngororero nyagatare nyamagabe nyamasheke nyanza nyarugenge rubavu ruhango rusizi rutsiro rwamagana; do
             # mudasobwa (default) shot
             f="step-10-mudasobwa-district-${d}.png"
             [ -f "$f" ] && cp "$f" "shots/${d}.png"
