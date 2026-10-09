@@ -11,13 +11,11 @@ on:
         description: "Single district to test (leave empty for full verified sweep)"
         required: false
         default: ""
-  # Daytime auto-runs (Kigali = UTC+2): 09:00 + 15:00 Kigali. 2x30min/day
-  # fits the 2000 free Actions min/month. Night runs capture zeros and waste
-  # minutes, so there is no night cron and the night-gate step skips full
-  # sweeps outside 05:00-20:00 Kigali. Empty captures never overwrite good
-  # data (rows gate in the save step).
+  # Auto-runs every 2 hours (public repo: standard runners uncapped).
+  # The night-gate step still skips full sweeps outside 05:00-20:00 Kigali.
+  # Empty captures never overwrite good data (rows gate in the save step).
   schedule:
-    - cron: "0 7,13 * * *"
+    - cron: "0 */2 * * *"
 
 permissions:
   contents: write
