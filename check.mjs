@@ -44,7 +44,7 @@ if (ONLY_DISTRICT && !DISTRICT_KEYS.includes(ONLY_DISTRICT)) {
   process.exit(1);
 }
 console.log(ONLY_DISTRICT ? `Single-district mode: ${ONLY_DISTRICT}` : `Full sweep: ${DISTRICT_KEYS.length} districts`);
-const DISTRICTS = ACTIVE_KEYS.map((key) => ({ key, re: new RegExp(key, 'i') }));
+const DISTRICTS = DISTRICT_KEYS.map((key) => ({ key, re: new RegExp(key, 'i') }));
 
 // Exam types: computer-based first (back-compat default), then paper-based.
 // Each type re-runs the whole portal flow in a fresh browser.
