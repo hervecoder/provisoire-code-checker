@@ -7,6 +7,10 @@ on:
         description: "ID to check (leave empty to use secret IREMBO_ID or the default)"
         required: false
         default: ""
+      district:
+        description: "Single district to test (leave empty for full 30-district sweep)"
+        required: false
+        default: ""
   # Scheduled runs PAUSED for now: Irembo times out GitHub runners, and empty
   # runs must never overwrite good data. Re-enable (e.g. hourly) once green
   # runs are consistent again.
@@ -24,6 +28,8 @@ jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      INPUT_DISTRICT: ${{ inputs.district }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -57,6 +63,12 @@ jobs:
 
       - name: Save result + shots
         run: |
+          # Single-district test runs never touch committed data: results stay
+          # in the debug artifacts for inspection only.
+          if [ -n "${INPUT_DISTRICT:-}" ]; then
+            echo "single-district test ($INPUT_DISTRICT) - artifacts only, no commit"
+            exit 0
+          fi
           # NEVER overwrite good data with an empty capture: if no district
           # produced rows, fail loudly and keep the previous commit.
           # NEVER overwrite good data with an empty capture: re-parse each
