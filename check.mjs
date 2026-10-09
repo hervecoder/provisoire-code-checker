@@ -20,25 +20,30 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const DEFAULT_ID = '1200480003683096';
 const ID = (process.env.INPUT_ID || process.env.IREMBO_ID || DEFAULT_ID).trim();
 
-const DISTRICT_KEYS = [
-  'bugesera', 'burera', 'gakenke', 'gasabo', 'gatsibo', 'gicumbi',
-  'gisagara', 'huye', 'kamonyi', 'karongi', 'kayonza', 'kicukiro',
-  'kirehe', 'muhanga', 'musanze', 'ngoma', 'ngororero', 'nyabihu',
-  'nyagatare', 'nyamagabe', 'nyamasheke', 'nyanza', 'nyarugenge',
-  'nyaruguru', 'rubavu', 'ruhango', 'rulindo', 'rusizi', 'rutsiro',
-  'rwamagana',
-];
+// Per-type district lists, verified against Irembo's own Akarere dropdown on
+// 2026-10-09 (dropdown dump, run 37905963666). Districts Irembo does not list
+// for a type are never fetched for that type.
+const EXAM_DISTRICTS = {
+  mudasobwa: [
+    'bugesera', 'gicumbi', 'gisagara', 'huye', 'karongi', 'kayonza',
+    'kicukiro', 'kirehe', 'muhanga', 'musanze', 'ngororero', 'nyagatare',
+    'nyamasheke', 'nyarugenge', 'ruhango', 'rutsiro', 'rwamagana',
+  ],
+  impapuro: [
+    'bugesera', 'gicumbi', 'huye', 'karongi', 'muhanga', 'musanze',
+    'ngoma', 'nyagatare', 'nyamagabe', 'nyanza', 'rubavu', 'rusizi',
+    'rwamagana',
+  ],
+};
+const DISTRICT_KEYS = [...new Set([...EXAM_DISTRICTS.mudasobwa, ...EXAM_DISTRICTS.impapuro])];
 // Single-district test mode (workflow_dispatch `district` input): check only
 // that district so one flow can be watched in isolation before sweeping all.
 const ONLY_DISTRICT = (process.env.INPUT_DISTRICT || '').trim().toLowerCase();
-const ACTIVE_KEYS = ONLY_DISTRICT
-  ? DISTRICT_KEYS.filter((k) => k === ONLY_DISTRICT)
-  : DISTRICT_KEYS;
-if (ONLY_DISTRICT && ACTIVE_KEYS.length === 0) {
+if (ONLY_DISTRICT && !DISTRICT_KEYS.includes(ONLY_DISTRICT)) {
   console.error(`Unknown district: ${ONLY_DISTRICT} (expected one of: ${DISTRICT_KEYS.join(', ')})`);
   process.exit(1);
 }
-console.log(ONLY_DISTRICT ? `Single-district mode: ${ONLY_DISTRICT}` : `Full sweep: ${ACTIVE_KEYS.length} districts`);
+console.log(ONLY_DISTRICT ? `Single-district mode: ${ONLY_DISTRICT}` : `Full sweep: ${DISTRICT_KEYS.length} districts`);
 const DISTRICTS = ACTIVE_KEYS.map((key) => ({ key, re: new RegExp(key, 'i') }));
 
 // Exam types: computer-based first (back-compat default), then paper-based.
@@ -73,6 +78,8 @@ const scrub = (s) => String(s || '').split(ID).join('[hidden]');
 async function runType(typeCfg) {
   const { key: typeKey } = typeCfg;
   const tag = (n) => `step-${typeKey}-${n}`;
+  let typeKeys = EXAM_DISTRICTS[typeKey] || DISTRICT_KEYS;
+  if (ONLY_DISTRICT) typeKeys = typeKeys.filter((k) => k === ONLY_DISTRICT);
   const browser = await chromium.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-dev-shm-usage'],
@@ -495,6 +502,7 @@ async function runType(typeCfg) {
               try { names.push((await oo.nth(k).innerText({ timeout: 2000 })).trim()); } catch {}
             }
             fs.writeFileSync(`options-districts-${typeKey}.json`, JSON.stringify(names, null, 2));
+            out._dropdownNames = names;
             console.log(`[${typeKey}] district options (${names.length}): ` + names.join(' | ').slice(0, 1200));
             break;
           } catch {}
@@ -504,7 +512,14 @@ async function runType(typeCfg) {
       } catch {}
 
       out.districts = {};
-      for (const { key, re } of DISTRICTS) {
+      if (Array.isArray(out._dropdownNames) && out._dropdownNames.length) {
+        const live = typeKeys.filter((k) => out._dropdownNames.some((n) => String(n).toLowerCase().includes(k)));
+        if (live.length) {
+          if (live.length !== typeKeys.length) console.log(`[${typeKey}] live dropdown trims ${typeKeys.length} -> ${live.length}: ` + live.join(','));
+          typeKeys = live;
+        }
+      }
+      for (const { key, re } of typeKeys.map((k) => ({ key: k, re: new RegExp(k, 'i') }))) {
         try {
           await pickDropdown(/hitamo akarere|akarere/i, re);
           await sleep(2000);
