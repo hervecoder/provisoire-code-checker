@@ -109,32 +109,34 @@ async function runType(typeCfg) {
             if (v.replace(/\D/g, '').length >= 10) inp.value = '';
           } catch {}
         });
-        // 2) Hide small elements whose text contains the ID.
+        // 2) Hide ONLY leaf elements whose own text contains the ID (the
+        // name/number display lines). Never hide ancestors: climbing up once
+        // blanked the whole form (Akarere dropdown + slot table) and failed
+        // every district picked after the first.
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
         let el = null;
         const hide = [];
         while ((el = walker.nextNode())) {
           try {
             const t = el.innerText || '';
-            if (t && t.includes(idNum) && t.length < 3000) hide.push(el);
+            if (el.children.length !== 0) continue;
+            if (t && t.includes(idNum)) hide.push(el);
           } catch {}
         }
         hide.forEach((e) => {
           e.style.display = 'none';
         });
-        // 3) Hide the whole applicant summary card (Amakuru Y'usaba block).
-        document.querySelectorAll('*').forEach((e) => {
-          try {
-            const t = e.innerText || '';
-            if (/Amakuru Y['’]usaba/.test(t) && t.length < 600) {
-              let p = e;
-              for (let i = 0; i < 4 && p; i++) p = p.parentElement;
-              if (p && p.style) p.style.display = 'none';
-            }
-          } catch {}
-        });
       }, ID);
       await sleep(700);
+      // Sanity: the form must still be readable after scrubbing. If the
+      // Akarere picker is gone, the scrub broke the DOM — refuse the shot.
+      try {
+        const sanity = await page.evaluate(() => document.body.innerText || '').catch(() => '');
+        if (!/akarere/i.test(sanity)) {
+          console.log(`[${typeKey}] ${key} SCRUB-BROKE-DOM: form hidden after scrub`);
+          return false;
+        }
+      } catch {}
       await page.screenshot({ path: `step-10-${typeKey}-district-${key}.png`, fullPage: true });
       return true;
     } catch {
@@ -559,7 +561,12 @@ async function runType(typeCfg) {
             console.log(`[${typeKey}] ${key} SKIPPED: district not switched`);
             continue;
           }
-          await clippedDistrictShot(key);
+          const shotKeptForm = await clippedDistrictShot(key);
+          if (!shotKeptForm) {
+            out.districts[key] = { error: 'scrub hid the form (shot refused)' };
+            console.log(`[${typeKey}] ${key} SKIPPED: scrub hid the form`);
+            continue;
+          }
           const slotText = await page.evaluate(() => document.body.innerText || '').catch(() => '');
           const m = slotText.match(/imyanya[^\n]{0,120}/gi) || slotText.match(/nta mwanya[^\n]{0,120}/gi) || [];
           // Worker-grade row pattern (date/center/time/count across lines).
