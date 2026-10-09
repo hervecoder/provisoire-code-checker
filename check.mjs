@@ -28,7 +28,18 @@ const DISTRICT_KEYS = [
   'nyaruguru', 'rubavu', 'ruhango', 'rulindo', 'rusizi', 'rutsiro',
   'rwamagana',
 ];
-const DISTRICTS = DISTRICT_KEYS.map((key) => ({ key, re: new RegExp(key, 'i') }));
+// Single-district test mode (workflow_dispatch `district` input): check only
+// that district so one flow can be watched in isolation before sweeping all.
+const ONLY_DISTRICT = (process.env.INPUT_DISTRICT || '').trim().toLowerCase();
+const ACTIVE_KEYS = ONLY_DISTRICT
+  ? DISTRICT_KEYS.filter((k) => k === ONLY_DISTRICT)
+  : DISTRICT_KEYS;
+if (ONLY_DISTRICT && ACTIVE_KEYS.length === 0) {
+  console.error(`Unknown district: ${ONLY_DISTRICT} (expected one of: ${DISTRICT_KEYS.join(', ')})`);
+  process.exit(1);
+}
+console.log(ONLY_DISTRICT ? `Single-district mode: ${ONLY_DISTRICT}` : `Full sweep: ${ACTIVE_KEYS.length} districts`);
+const DISTRICTS = ACTIVE_KEYS.map((key) => ({ key, re: new RegExp(key, 'i') }));
 
 // Exam types: computer-based first (back-compat default), then paper-based.
 // Each type re-runs the whole portal flow in a fresh browser.
