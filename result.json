@@ -1,5 +1,5 @@
 {
-  "started_at": "2026-10-17T03:19:14.959Z",
+  "started_at": "2026-10-17T07:06:38.696Z",
   "steps": [
     "mudasobwa:home",
     "mudasobwa:exam",
@@ -8,6 +8,7 @@
     "mudasobwa:id-filled",
     "mudasobwa:result",
     "mudasobwa:name-filled",
+    "mudasobwa:dob-filled",
     "mudasobwa:genzura-clicked",
     "mudasobwa:verified",
     "mudasobwa:applicant-handled",
@@ -27,19 +28,10 @@
     "mudasobwa": {
       "districts": {
         "bugesera": {
-          "imyanya": [
-            "Imyanya"
-          ],
-          "rows": [
-            {
-              "date": "20-10-2026",
-              "center": "BUGESERA COMPUTER BASED EXAMINATION CENTRE (BUG)",
-              "time": "2:00 PM - 3:00 PM",
-              "slots": 3
-            }
-          ],
-          "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nBugesera\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n1\nIbyiciro bihari saa 5:20:43 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n20-10-2026\nBUGESERA COMPUTER BASED EXAMINATION CENTRE (BUG)\n2:00 PM - 3:00 PM\nImyanya\n3\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze"
+          "imyanya": [],
+          "rows": [],
+          "has_slots": false,
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nBugesera\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n0\nNta myanya yabonetse..\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze"
         },
         "gicumbi": {
           "imyanya": [
@@ -77,7 +69,7 @@
               "date": "19-10-2026",
               "center": "GICUMBI EXAMINATION CENTER (GIC)",
               "time": "11:00 AM - 12:00 PM",
-              "slots": 15
+              "slots": 14
             },
             {
               "date": "19-10-2026",
@@ -117,7 +109,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGicumbi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:21:13 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n10:00 AM - 11:00 AM\nImyanya\n8\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n11:00 AM - 12:00 PM\nImyanya\n15\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n12:00 PM - 1:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM "
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGicumbi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:08:15 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n10:00 AM - 11:00 AM\nImyanya\n8\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n12:00 PM - 1:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM "
         },
         "gisagara": {
           "imyanya": [
@@ -195,7 +187,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGisagara\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:21:52 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n10:00 AM - 11:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n1:00 PM - 2:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGISAGARA EXAMINATION CENTER (GI"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGisagara\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:08:55 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n10:00 AM - 11:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n1:00 PM - 2:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGISAGARA EXAMINATION CENTER (GI"
         },
         "huye": {
           "imyanya": [
@@ -273,7 +265,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nHuye\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:22:21 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n6\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n9:00 AM - 10:00 AM\nImyanya\n9\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n10:00 AM - 11:00 AM\nImyanya\n3\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n11:00 AM - 12:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n12:00 PM - 1:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n1:00 PM - 2:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n2:00 PM - 3:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n10\n20-10-2026\n"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nHuye\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:09:24 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n6\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n9:00 AM - 10:00 AM\nImyanya\n9\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n10:00 AM - 11:00 AM\nImyanya\n3\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n11:00 AM - 12:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n12:00 PM - 1:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n1:00 PM - 2:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n2:00 PM - 3:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n10\n20-10-2026\n"
         },
         "karongi": {
           "imyanya": [
@@ -351,7 +343,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKarongi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:23:01 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n8:00 AM - 9:00 AM\nImyanya\n12\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n9:00 AM - 10:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKARONGI EXAMINATION CENTERS (KAR"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKarongi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:10:03 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n8:00 AM - 9:00 AM\nImyanya\n12\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n9:00 AM - 10:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKARONGI EXAMINATION CENTERS (KAR"
         },
         "kayonza": {
           "imyanya": [
@@ -377,7 +369,7 @@
               "date": "19-10-2026",
               "center": "KAYONZA EXAMINATION CENTER (KAY)",
               "time": "9:00 AM - 10:00 AM",
-              "slots": 8
+              "slots": 7
             },
             {
               "date": "19-10-2026",
@@ -429,7 +421,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKayonza\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:23:40 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n9\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 10:00 AM\nImyanya\n8\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n11:00 AM - 12:00 PM\nImyanya\n11\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n12\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 1"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKayonza\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:10:42 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n9\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n11:00 AM - 12:00 PM\nImyanya\n11\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n12\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 1"
         },
         "kicukiro": {
           "imyanya": [
@@ -447,25 +439,25 @@
               "date": "19-10-2026",
               "center": "BUSANZA AUTOMATED CENTER",
               "time": "11:30 AM - 1:00 PM",
-              "slots": 35
+              "slots": 29
             },
             {
               "date": "19-10-2026",
               "center": "BUSANZA AUTOMATED CENTER",
               "time": "2:30 PM - 4:00 PM",
-              "slots": 25
+              "slots": 22
             },
             {
               "date": "19-10-2026",
               "center": "BUSANZA AUTOMATED CENTER",
               "time": "4:00 PM - 5:30 PM",
-              "slots": 63
+              "slots": 62
             },
             {
               "date": "20-10-2026",
               "center": "BUSANZA AUTOMATED CENTER",
               "time": "8:30 AM - 10:00 AM",
-              "slots": 53
+              "slots": 52
             },
             {
               "date": "20-10-2026",
@@ -477,23 +469,23 @@
               "date": "20-10-2026",
               "center": "BUSANZA AUTOMATED CENTER",
               "time": "11:30 AM - 1:00 PM",
-              "slots": 61
+              "slots": 60
             },
             {
               "date": "20-10-2026",
               "center": "BUSANZA AUTOMATED CENTER",
               "time": "2:30 PM - 4:00 PM",
-              "slots": 50
+              "slots": 47
             },
             {
               "date": "20-10-2026",
               "center": "BUSANZA AUTOMATED CENTER",
               "time": "4:00 PM - 5:30 PM",
-              "slots": 87
+              "slots": 86
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKicukiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n8\nIbyiciro bihari saa 5:24:20 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n35\n19-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n25\n19-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n63\n20-10-2026\nBUSANZA AUTOMATED CENTER\n8:30 AM - 10:00 AM\nImyanya\n53\n20-10-2026\nBUSANZA AUTOMATED CENTER\n10:00 AM - 11:30 AM\nImyanya\n33\n20-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n61\n20-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n50\n20-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n87\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire "
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKicukiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n8\nIbyiciro bihari saa 9:11:22 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n29\n19-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n22\n19-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n62\n20-10-2026\nBUSANZA AUTOMATED CENTER\n8:30 AM - 10:00 AM\nImyanya\n52\n20-10-2026\nBUSANZA AUTOMATED CENTER\n10:00 AM - 11:30 AM\nImyanya\n33\n20-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n60\n20-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n47\n20-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n86\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire "
         },
         "kirehe": {
           "imyanya": [
@@ -519,13 +511,13 @@
               "date": "19-10-2026",
               "center": "KIREHE EXAMINATION CENTER (KIR)",
               "time": "9:00 AM - 10:00 AM",
-              "slots": 8
+              "slots": 7
             },
             {
               "date": "19-10-2026",
               "center": "KIREHE EXAMINATION CENTER (KIR)",
               "time": "10:00 AM - 11:00 AM",
-              "slots": 8
+              "slots": 7
             },
             {
               "date": "19-10-2026",
@@ -571,7 +563,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKirehe\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:24:49 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n9:00 AM - 10:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n10:00 AM - 11:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nIm"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKirehe\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:11:51 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nIm"
         },
         "muhanga": {
           "imyanya": [
@@ -649,7 +641,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nMuhanga\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:25:28 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n9:00 AM - 10:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n10:00 AM - 11:00 AM\nImyanya\n2\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n1:00 PM - 2:00 PM\nImyanya\n7\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM -"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nMuhanga\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:12:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n9:00 AM - 10:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n10:00 AM - 11:00 AM\nImyanya\n2\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n1:00 PM - 2:00 PM\nImyanya\n7\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM -"
         },
         "musanze": {
           "imyanya": [],
@@ -733,7 +725,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNgororero\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:26:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n8:00 AM - 9:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNGORORERO EXAMINATION "
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNgororero\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:13:32 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n8:00 AM - 9:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNGORORERO EXAMINATION "
         },
         "nyagatare": {
           "imyanya": [
@@ -753,13 +745,13 @@
               "date": "19-10-2026",
               "center": "NYAGATARE EXAMINATION CENTER (NYT)",
               "time": "8:00 AM - 9:00 AM",
-              "slots": 8
+              "slots": 6
             },
             {
               "date": "19-10-2026",
               "center": "NYAGATARE EXAMINATION CENTER (NYT)",
               "time": "9:00 AM - 10:00 AM",
-              "slots": 7
+              "slots": 5
             },
             {
               "date": "19-10-2026",
@@ -771,7 +763,7 @@
               "date": "19-10-2026",
               "center": "NYAGATARE EXAMINATION CENTER (NYT)",
               "time": "11:00 AM - 12:00 PM",
-              "slots": 13
+              "slots": 12
             },
             {
               "date": "19-10-2026",
@@ -811,7 +803,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyagatare\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:26:59 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n8:00 AM - 9:00 AM\nImyanya\n8\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n11:00 AM - 12:00 PM\nImyanya\n13\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nNYAGATARE EXAMINATION CEN"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyagatare\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:14:01 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n8:00 AM - 9:00 AM\nImyanya\n6\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n9:00 AM - 10:00 AM\nImyanya\n5\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nNYAGATARE EXAMINATION CEN"
         },
         "nyamasheke": {
           "imyanya": [
@@ -855,7 +847,7 @@
               "date": "19-10-2026",
               "center": "NYAMASHEKE EXAMINATION CENTER (NYK)",
               "time": "12:00 PM - 1:00 PM",
-              "slots": 15
+              "slots": 14
             },
             {
               "date": "19-10-2026",
@@ -889,7 +881,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:27:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:14:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA"
         },
         "nyarugenge": {
           "imyanya": [],
@@ -973,7 +965,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRuhango\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:28:10 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n9:00 AM - 10:00 AM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n10:00 AM - 11:00 AM\nImyanya\n12\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n11:00 AM - 12:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRuhango\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:15:10 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n9:00 AM - 10:00 AM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n10:00 AM - 11:00 AM\nImyanya\n12\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n11:00 AM - 12:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM"
         },
         "rutsiro": {
           "imyanya": [
@@ -999,7 +991,7 @@
               "date": "19-10-2026",
               "center": "RUTSIRO EXAMINATION CENTER (RUT)",
               "time": "9:00 AM - 10:00 AM",
-              "slots": 8
+              "slots": 7
             },
             {
               "date": "19-10-2026",
@@ -1051,7 +1043,7 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRutsiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:28:49 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n9:00 AM - 10:00 AM\nImyanya\n8\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM -"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRutsiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:15:50 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM -"
         },
         "rwamagana": {
           "imyanya": [
@@ -1129,10 +1121,10 @@
             }
           ],
           "has_slots": true,
-          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRwamagana\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:29:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRWAMAGANA EXAMINATION C"
+          "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRwamagana\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:16:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRWAMAGANA EXAMINATION C"
         }
       },
-      "slot_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:27:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA",
+      "slot_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:14:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA",
       "imyanya": [
         "Imyanya",
         "Imyanya",
@@ -1196,19 +1188,10 @@
   },
   "districts": {
     "bugesera": {
-      "imyanya": [
-        "Imyanya"
-      ],
-      "rows": [
-        {
-          "date": "20-10-2026",
-          "center": "BUGESERA COMPUTER BASED EXAMINATION CENTRE (BUG)",
-          "time": "2:00 PM - 3:00 PM",
-          "slots": 3
-        }
-      ],
-      "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nBugesera\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n1\nIbyiciro bihari saa 5:20:43 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n20-10-2026\nBUGESERA COMPUTER BASED EXAMINATION CENTRE (BUG)\n2:00 PM - 3:00 PM\nImyanya\n3\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze"
+      "imyanya": [],
+      "rows": [],
+      "has_slots": false,
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nBugesera\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n0\nNta myanya yabonetse..\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire kuri\nAmabwiriza ku mikoreshereze\nUko sisitemu ihagaze"
     },
     "gicumbi": {
       "imyanya": [
@@ -1246,7 +1229,7 @@
           "date": "19-10-2026",
           "center": "GICUMBI EXAMINATION CENTER (GIC)",
           "time": "11:00 AM - 12:00 PM",
-          "slots": 15
+          "slots": 14
         },
         {
           "date": "19-10-2026",
@@ -1286,7 +1269,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGicumbi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:21:13 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n10:00 AM - 11:00 AM\nImyanya\n8\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n11:00 AM - 12:00 PM\nImyanya\n15\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n12:00 PM - 1:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM "
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGicumbi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:08:15 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n10:00 AM - 11:00 AM\nImyanya\n8\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n12:00 PM - 1:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGICUMBI EXAMINATION CENTER (GIC)\n8:00 AM "
     },
     "gisagara": {
       "imyanya": [
@@ -1364,7 +1347,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGisagara\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:21:52 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n10:00 AM - 11:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n1:00 PM - 2:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGISAGARA EXAMINATION CENTER (GI"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nGisagara\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:08:55 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n10:00 AM - 11:00 AM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n1:00 PM - 2:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nGISAGARA EXAMINATION CENTER (GIS)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nGISAGARA EXAMINATION CENTER (GI"
     },
     "huye": {
       "imyanya": [
@@ -1442,7 +1425,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nHuye\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:22:21 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n6\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n9:00 AM - 10:00 AM\nImyanya\n9\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n10:00 AM - 11:00 AM\nImyanya\n3\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n11:00 AM - 12:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n12:00 PM - 1:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n1:00 PM - 2:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n2:00 PM - 3:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n10\n20-10-2026\n"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nHuye\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:09:24 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n6\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n9:00 AM - 10:00 AM\nImyanya\n9\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n10:00 AM - 11:00 AM\nImyanya\n3\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n11:00 AM - 12:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n12:00 PM - 1:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n1:00 PM - 2:00 PM\nImyanya\n11\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n2:00 PM - 3:00 PM\nImyanya\n10\n19-10-2026\nHUYE EXAMINATION CENTER (HUY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nHUYE EXAMINATION CENTER (HUY)\n8:00 AM - 9:00 AM\nImyanya\n10\n20-10-2026\n"
     },
     "karongi": {
       "imyanya": [
@@ -1520,7 +1503,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKarongi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:23:01 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n8:00 AM - 9:00 AM\nImyanya\n12\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n9:00 AM - 10:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKARONGI EXAMINATION CENTERS (KAR"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKarongi\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:10:03 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n8:00 AM - 9:00 AM\nImyanya\n12\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n9:00 AM - 10:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nKARONGI EXAMINATION CENTERS (KAR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKARONGI EXAMINATION CENTERS (KAR"
     },
     "kayonza": {
       "imyanya": [
@@ -1546,7 +1529,7 @@
           "date": "19-10-2026",
           "center": "KAYONZA EXAMINATION CENTER (KAY)",
           "time": "9:00 AM - 10:00 AM",
-          "slots": 8
+          "slots": 7
         },
         {
           "date": "19-10-2026",
@@ -1598,7 +1581,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKayonza\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:23:40 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n9\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 10:00 AM\nImyanya\n8\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n11:00 AM - 12:00 PM\nImyanya\n11\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n12\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 1"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKayonza\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:10:42 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n9\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n11:00 AM - 12:00 PM\nImyanya\n11\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n3:00 PM - 4:00 PM\nImyanya\n11\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n8:00 AM - 9:00 AM\nImyanya\n12\n20-10-2026\nKAYONZA EXAMINATION CENTER (KAY)\n9:00 AM - 1"
     },
     "kicukiro": {
       "imyanya": [
@@ -1616,25 +1599,25 @@
           "date": "19-10-2026",
           "center": "BUSANZA AUTOMATED CENTER",
           "time": "11:30 AM - 1:00 PM",
-          "slots": 35
+          "slots": 29
         },
         {
           "date": "19-10-2026",
           "center": "BUSANZA AUTOMATED CENTER",
           "time": "2:30 PM - 4:00 PM",
-          "slots": 25
+          "slots": 22
         },
         {
           "date": "19-10-2026",
           "center": "BUSANZA AUTOMATED CENTER",
           "time": "4:00 PM - 5:30 PM",
-          "slots": 63
+          "slots": 62
         },
         {
           "date": "20-10-2026",
           "center": "BUSANZA AUTOMATED CENTER",
           "time": "8:30 AM - 10:00 AM",
-          "slots": 53
+          "slots": 52
         },
         {
           "date": "20-10-2026",
@@ -1646,23 +1629,23 @@
           "date": "20-10-2026",
           "center": "BUSANZA AUTOMATED CENTER",
           "time": "11:30 AM - 1:00 PM",
-          "slots": 61
+          "slots": 60
         },
         {
           "date": "20-10-2026",
           "center": "BUSANZA AUTOMATED CENTER",
           "time": "2:30 PM - 4:00 PM",
-          "slots": 50
+          "slots": 47
         },
         {
           "date": "20-10-2026",
           "center": "BUSANZA AUTOMATED CENTER",
           "time": "4:00 PM - 5:30 PM",
-          "slots": 87
+          "slots": 86
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKicukiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n8\nIbyiciro bihari saa 5:24:20 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n35\n19-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n25\n19-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n63\n20-10-2026\nBUSANZA AUTOMATED CENTER\n8:30 AM - 10:00 AM\nImyanya\n53\n20-10-2026\nBUSANZA AUTOMATED CENTER\n10:00 AM - 11:30 AM\nImyanya\n33\n20-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n61\n20-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n50\n20-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n87\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire "
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKicukiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n8\nIbyiciro bihari saa 9:11:22 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n29\n19-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n22\n19-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n62\n20-10-2026\nBUSANZA AUTOMATED CENTER\n8:30 AM - 10:00 AM\nImyanya\n52\n20-10-2026\nBUSANZA AUTOMATED CENTER\n10:00 AM - 11:30 AM\nImyanya\n33\n20-10-2026\nBUSANZA AUTOMATED CENTER\n11:30 AM - 1:00 PM\nImyanya\n60\n20-10-2026\nBUSANZA AUTOMATED CENTER\n2:30 PM - 4:00 PM\nImyanya\n47\n20-10-2026\nBUSANZA AUTOMATED CENTER\n4:00 PM - 5:30 PM\nImyanya\n86\nIbikurikira\nHagarika\nUburenganzira bw'Irembo 2026 burubahirizwa\n   Ahatangirwa ubufasha\nSura IremboPlus \nDukurikire "
     },
     "kirehe": {
       "imyanya": [
@@ -1688,13 +1671,13 @@
           "date": "19-10-2026",
           "center": "KIREHE EXAMINATION CENTER (KIR)",
           "time": "9:00 AM - 10:00 AM",
-          "slots": 8
+          "slots": 7
         },
         {
           "date": "19-10-2026",
           "center": "KIREHE EXAMINATION CENTER (KIR)",
           "time": "10:00 AM - 11:00 AM",
-          "slots": 8
+          "slots": 7
         },
         {
           "date": "19-10-2026",
@@ -1740,7 +1723,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKirehe\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:24:49 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n9:00 AM - 10:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n10:00 AM - 11:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nIm"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nKirehe\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:11:51 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nImyanya\n8\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nKIREHE EXAMINATION CENTER (KIR)\n8:00 AM - 9:00 AM\nIm"
     },
     "muhanga": {
       "imyanya": [
@@ -1818,7 +1801,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nMuhanga\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:25:28 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n9:00 AM - 10:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n10:00 AM - 11:00 AM\nImyanya\n2\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n1:00 PM - 2:00 PM\nImyanya\n7\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM -"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nMuhanga\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:12:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n9:00 AM - 10:00 AM\nImyanya\n10\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n10:00 AM - 11:00 AM\nImyanya\n2\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n11:00 AM - 12:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n1:00 PM - 2:00 PM\nImyanya\n7\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nMUHANGA EXAMINATION CENTER (MUH)\n8:00 AM -"
     },
     "musanze": {
       "imyanya": [],
@@ -1902,7 +1885,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNgororero\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:26:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n8:00 AM - 9:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNGORORERO EXAMINATION "
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNgororero\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:13:32 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n8:00 AM - 9:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n9:00 AM - 10:00 AM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n10:00 AM - 11:00 AM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nNGORORERO EXAMINATION CENTER (NGR)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNGORORERO EXAMINATION "
     },
     "nyagatare": {
       "imyanya": [
@@ -1922,13 +1905,13 @@
           "date": "19-10-2026",
           "center": "NYAGATARE EXAMINATION CENTER (NYT)",
           "time": "8:00 AM - 9:00 AM",
-          "slots": 8
+          "slots": 6
         },
         {
           "date": "19-10-2026",
           "center": "NYAGATARE EXAMINATION CENTER (NYT)",
           "time": "9:00 AM - 10:00 AM",
-          "slots": 7
+          "slots": 5
         },
         {
           "date": "19-10-2026",
@@ -1940,7 +1923,7 @@
           "date": "19-10-2026",
           "center": "NYAGATARE EXAMINATION CENTER (NYT)",
           "time": "11:00 AM - 12:00 PM",
-          "slots": 13
+          "slots": 12
         },
         {
           "date": "19-10-2026",
@@ -1980,7 +1963,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyagatare\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:26:59 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n8:00 AM - 9:00 AM\nImyanya\n8\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n11:00 AM - 12:00 PM\nImyanya\n13\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nNYAGATARE EXAMINATION CEN"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyagatare\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:14:01 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n8:00 AM - 9:00 AM\nImyanya\n6\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n9:00 AM - 10:00 AM\nImyanya\n5\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nNYAGATARE EXAMINATION CENTER (NYT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nNYAGATARE EXAMINATION CEN"
     },
     "nyamasheke": {
       "imyanya": [
@@ -2024,7 +2007,7 @@
           "date": "19-10-2026",
           "center": "NYAMASHEKE EXAMINATION CENTER (NYK)",
           "time": "12:00 PM - 1:00 PM",
-          "slots": 15
+          "slots": 14
         },
         {
           "date": "19-10-2026",
@@ -2058,7 +2041,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:27:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:14:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA"
     },
     "nyarugenge": {
       "imyanya": [],
@@ -2142,7 +2125,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRuhango\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:28:10 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n9:00 AM - 10:00 AM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n10:00 AM - 11:00 AM\nImyanya\n12\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n11:00 AM - 12:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRuhango\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:15:10 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n9:00 AM - 10:00 AM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n10:00 AM - 11:00 AM\nImyanya\n12\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n11:00 AM - 12:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n2:00 PM - 3:00 PM\nImyanya\n15\n19-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUHANGO EXAMINATION CENTER (RUH)\n8:00 AM"
     },
     "rutsiro": {
       "imyanya": [
@@ -2168,7 +2151,7 @@
           "date": "19-10-2026",
           "center": "RUTSIRO EXAMINATION CENTER (RUT)",
           "time": "9:00 AM - 10:00 AM",
-          "slots": 8
+          "slots": 7
         },
         {
           "date": "19-10-2026",
@@ -2220,7 +2203,7 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRutsiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:28:49 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n9:00 AM - 10:00 AM\nImyanya\n8\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM -"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRutsiro\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:15:50 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM - 9:00 AM\nImyanya\n15\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n9:00 AM - 10:00 AM\nImyanya\n7\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n1:00 PM - 2:00 PM\nImyanya\n14\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRUTSIRO EXAMINATION CENTER (RUT)\n8:00 AM -"
     },
     "rwamagana": {
       "imyanya": [
@@ -2298,10 +2281,10 @@
         }
       ],
       "has_slots": true,
-      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRwamagana\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:29:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRWAMAGANA EXAMINATION C"
+      "text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nRwamagana\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:16:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n8:00 AM - 9:00 AM\nImyanya\n10\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n9:00 AM - 10:00 AM\nImyanya\n11\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n10:00 AM - 11:00 AM\nImyanya\n7\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n11:00 AM - 12:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n12:00 PM - 1:00 PM\nImyanya\n13\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n1:00 PM - 2:00 PM\nImyanya\n12\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n2:00 PM - 3:00 PM\nImyanya\n14\n19-10-2026\nRWAMAGANA EXAMINATION CENTER (RGN)\n3:00 PM - 4:00 PM\nImyanya\n15\n20-10-2026\nRWAMAGANA EXAMINATION C"
     }
   },
-  "slot_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 5:27:29 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n15\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA",
+  "slot_text": "Igishya! Umwaka wa mituweli 2026/2027 watangiye. Ishyurira umuryango wawe hano\n Ahatangirwa ubufasha Iyandikishe KwinjiraShaka dosiye\n Kinyarwanda \nAhabanza / Kwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nKwiyandikisha gukora ikizamini cy'uruhushya rw'agateganyo gikorerwa kuri mudasobwa\nUsaba: NDATIMANA Herve\n1. Dosiye isaba\n2. Incamake\n3. Kwishyura\n Amakuru y’usaba\nNomero y'indangamuntu\n*\n \nAmakuru Y’usaba\n\nAmazina: NDATIMANA Herve\n\nNomero y'indangamuntu: [hidden]\n\n Ibijyanye no kwiyandikisha\nUrurimi ikizamini gikorwamo\n*\nIkinyarwanda\nAkarere\n*\nNyamasheke\nHitamo ukurikije\nItariki\nIgihe\nGuhitamo hakurikijwe igihe\nAho ikizamini kizabera\nGuhitamo hakurikijwe aho ikizamini kizabera\n Shyira ku gihe\nIbyiciro bihari\n10\nIbyiciro bihari saa 9:14:30 AM.Kora amahitamo byihuse kugira ngo wongere amahirwe yo guhabwa umwanya!\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n8:00 AM - 9:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n9:00 AM - 10:00 AM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n10:00 AM - 11:00 AM\nImyanya\n10\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n11:00 AM - 12:00 PM\nImyanya\n6\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n12:00 PM - 1:00 PM\nImyanya\n14\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n1:00 PM - 2:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n2:00 PM - 3:00 PM\nImyanya\n13\n19-10-2026\nNYAMASHEKE EXAMINATION CENTER (NYK)\n3:00 PM - 4:00 PM\nImyanya\n14\n20-10-2026\nNYAMASHEKE EXA",
   "imyanya": [
     "Imyanya",
     "Imyanya",
@@ -2315,5 +2298,5 @@
     "Imyanya"
   ],
   "has_slots": true,
-  "finished_at": "2026-10-17T03:42:07.549Z"
+  "finished_at": "2026-10-17T07:29:02.588Z"
 }
