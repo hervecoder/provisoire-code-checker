@@ -30,8 +30,9 @@ npx playwright install chromium
 IREMBO_ID=... node check.mjs   # writes result.json + step-*.png
 ```
 
-The applicant ID is never stored in the repo. CI reads it from the `IREMBO_ID`
-Actions secret; a manual dispatch may pass the `id_number` input instead.
+The current code and data do not store the applicant ID. CI reads it from the
+`IREMBO_ID` Actions secret; a manual dispatch may pass the `id_number` input
+instead.
 
 ## Required secrets
 
