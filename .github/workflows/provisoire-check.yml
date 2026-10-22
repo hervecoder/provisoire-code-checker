@@ -11,11 +11,9 @@ on:
         description: "Single district to test (leave empty for full verified sweep)"
         required: false
         default: ""
-  # Auto-runs every 2 hours (public repo: standard runners uncapped).
-  # Second line backstops GitHub's flaky schedule delivery (dropped ticks):
-  # even if one tick never fires, the other lands ~1h later in the same window.
-  # The night-gate step still skips full sweeps outside 05:00-20:00 Kigali.
-  # Empty captures never overwrite good data (rows gate in the save step).
+  # Auto-runs every 2 hours, including at night. An empty capture no longer
+  # fails the run: it keeps the last good committed data and prints a friendly
+  # retry message. The second cron line backstops GitHub's flaky schedule.
   schedule:
     - cron: "0 */2 * * *"
     - cron: "30 */2 * * *"
@@ -39,31 +37,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Night gate (full sweep only)
-        id: gate
-        run: |
-          if [ -n "${INPUT_DISTRICT:-}" ]; then
-            echo "go=true" >> $GITHUB_OUTPUT
-            echo "single-district test — always runs"
-            exit 0
-          fi
-          H=$(TZ=Africa/Kigali date +%-H)
-          if [ "$H" -lt 5 ] || [ "$H" -ge 20 ]; then
-            echo "go=false" >> $GITHUB_OUTPUT
-            echo "Kigali ${H}h at night — Irembo shows no slots. Skipping (not a failure)."
-          else
-            echo "go=true" >> $GITHUB_OUTPUT
-            echo "Kigali ${H}h daytime — proceeding."
-          fi
-
       - name: Install Playwright
-        if: steps.gate.outputs.go == 'true'
         run: |
           npm i playwright@latest --no-save
           npx playwright install --with-deps chromium
 
       - name: Check Irembo provisoire slots
-        if: steps.gate.outputs.go == 'true'
         env:
           IREMBO_ID: ${{ secrets.IREMBO_ID }}
           INPUT_ID: ${{ inputs.id_number }}
@@ -84,26 +63,58 @@ jobs:
           if-no-files-found: ignore
 
       - name: Save result + shots
-        if: steps.gate.outputs.go == 'true'
+        id: save
         run: |
           # Single-district test runs never touch committed data: results stay
           # in the debug artifacts for inspection only.
           if [ -n "${INPUT_DISTRICT:-}" ]; then
             echo "single-district test ($INPUT_DISTRICT) - artifacts only, no commit"
+            echo "saved=false" >> $GITHUB_OUTPUT
             exit 0
           fi
-          # NEVER overwrite good data with an empty capture: if no district
-          # produced rows, fail loudly and keep the previous commit.
-          # NEVER overwrite good data with an empty capture: re-parse each
-          # district's raw text with the worker-grade pattern (check.mjs's own
-          # rows field uses a narrower pattern and is NOT the source of truth).
-          # Zero parsed rows anywhere = fail loudly, keep the previous commit.
-          DATA_ROWS=$(node -e "const j=require('./result.json');const re=/(\d{2}-\d{2}-\d{4})\s*\n([^\n]+)\n([^\n]*?\d{1,2}:\d{2}\s*(?:AM|PM)[^\n]*)\n(?:Imyanya|Umwanya)\s*\n(\d+)/gi;let n=0;for(const t of ['mudasobwa','impapuro']){const D=(j.types&&j.types[t]&&j.types[t].districts)||{};for(const k of Object.keys(D)){const txt=((D[k]||{}).text)||'';let m;re.lastIndex=0;while((m=re.exec(txt))){n++;if(n>=1)break;}if(n>=1)break;}if(n>=1)break;}console.log(n)" 2>/dev/null || echo BAD)
-          if ! [ "$DATA_ROWS" -ge 1 ] 2>/dev/null; then
-            echo "no slot rows captured (got '$DATA_ROWS') — refusing to overwrite good data"
+
+          # `rows` is the source of truth. Only parse text for older snapshots.
+          # Never overwrite good data with an empty capture.
+          DATA_ROWS=$(node - <<'NODE'
+          const fs = require('fs');
+          let j;
+          try {
+            j = JSON.parse(fs.readFileSync('result.json', 'utf8'));
+          } catch (e) {
+            console.log('BAD');
+            process.exit(0);
+          }
+          const re = /(\d{2}-\d{2}-\d{4})\s*\n([^\n]+)\n([^\n]*?\d{1,2}:\d{2}\s*(?:AM|PM|A\.M\.|P\.M\.)[^\n]*)\n(?:Imyanya|Umwanya)\s*\n(\d+)/gi;
+          let n = 0;
+          for (const t of ['mudasobwa', 'impapuro']) {
+            const D = (j.types && j.types[t] && j.types[t].districts) || {};
+            for (const k of Object.keys(D)) {
+              const d = D[k] || {};
+              if (Array.isArray(d.rows) && d.rows.length) {
+                n += d.rows.length;
+                continue;
+              }
+              if (!d.text) continue;
+              re.lastIndex = 0;
+              while (re.exec(d.text)) n += 1;
+            }
+          }
+          console.log(n);
+          NODE
+          )
+          if [ "$DATA_ROWS" = "BAD" ]; then
+            echo "result.json is missing or unreadable - keeping the previous data"
+            echo "saved=false" >> $GITHUB_OUTPUT
             exit 1
           fi
-          mkdir -p shots
+          if ! [ "$DATA_ROWS" -ge 1 ] 2>/dev/null; then
+            echo "Ntago nabashije kubona amakuru, wongere ugerageze nyuma."
+            echo "no slot rows captured (got '$DATA_ROWS') - keeping previous data"
+            echo "saved=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "captured $DATA_ROWS slot rows"
+
           mkdir -p shots
           # drop last run's shots so a failed run shows a placeholder, not a stale image
           rm -f shots/*.png
@@ -115,7 +126,7 @@ jobs:
             f2="step-10-impapuro-district-${d}.png"
             [ -f "$f2" ] && cp "$f2" "shots/${d}-impapuro.png"
           done
-          # NOTE: step-10-*-applicant.png is deliberately NOT committed — it can
+          # NOTE: step-10-*-applicant.png is deliberately NOT committed - it can
           # contain the applicant ID number. Debug artifacts stay in Actions only.
           if [ -f result.json ]; then
             git config user.name "provisoire-bot"
@@ -125,23 +136,34 @@ jobs:
             git add -A result.json shots || true
             if git diff --staged --quiet; then
               echo "no changes to save"
+              echo "saved=false" >> $GITHUB_OUTPUT
             else
               git commit -m "check $(date -u +%FT%TZ)"
               git fetch origin main || true
               git merge -X ours origin/main -m "merge latest capture" 2>/dev/null || true
               for i in 1 2 3; do git push origin HEAD:main && break || sleep 10; done
               git status -sb | head -3 && git log origin/main -1 --format=%H | grep -q "$(git rev-parse HEAD)" && echo "pushed OK" || exit 1
+              echo "saved=true" >> $GITHUB_OUTPUT
             fi
+          else
+            echo "saved=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Run summary
         if: always()
         run: |
-          node -e 'const fs=require("fs");try{const j=JSON.parse(fs.readFileSync("./result.json","utf8"));let s="## Provisoire check "+(j.finished_at||"unknown")+"\n";for(const t of ["mudasobwa","impapuro"]){const D=(j.types&&j.types[t]&&j.types[t].districts)||{};const ks=Object.keys(D);const has=ks.filter(k=>(D[k].rows||[]).length>0);const err=ks.filter(k=>D[k].error);s+="\n**"+t+"**: "+has.length+" with slots, "+err.length+" errors / "+ks.length+" checked"+(err.length?" ("+err.join(", ")+")":"")+"\n";}fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,s);}catch(e){}' || true
+          node -e 'const fs=require("fs");try{const j=JSON.parse(fs.readFileSync("./result.json","utf8"));let s="## Provisoire check "+(j.finished_at||"unknown")+"\n";for(const t of ["mudasobwa","impapuro"]){const D=(j.types&&j.types[t]&&j.types[t].districts)||{};const ks=Object.keys(D);const has=ks.filter(k=>(D[k].rows||[]).length>0);const err=ks.filter(k=>D[k].error);s+="\n**"+t+"**: "+has.length+" with slots, "+err.length+" errors / "+ks.length+" checked"+(err.length?" ("+err.join(", ")+")":"")+"\n";if(j.types&&j.types[t]&&j.types[t].no_districts)s+="> "+j.types[t].no_districts+"\n";}fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,s);}catch(e){}' || true
 
       - name: Verify live worker serves fresh data
-        if: ${{ inputs.district == '' && steps.gate.outputs.go == 'true' }}
+        if: ${{ inputs.district == '' && steps.save.outputs.saved == 'true' }}
         run: |
+          CFG=$(curl -s -o /tmp/config.json -w "%{http_code}" --max-time 20 "https://provisoire-slots.ndatimanah.workers.dev/api/config" || true)
+          echo "config HTTP $CFG"
+          if [ "$CFG" != "200" ]; then
+            echo "::warning::/api/config returned $CFG"
+          else
+            node -e "const c=require('/tmp/config.json'); const t=c.texts||{}; if(!t.typeMudasobwa||!t.typeImpapuro){console.error('missing type labels');process.exit(1)} console.log('config labels OK')" || echo "::warning::/api/config labels incomplete"
+          fi
           TODAY=$(date -u +%F)
           for i in $(seq 1 10); do
             GOT=$(curl -s --max-time 20 "https://provisoire-slots.ndatimanah.workers.dev/api/health" || true)
@@ -149,5 +171,5 @@ jobs:
             echo "$GOT" | grep -q "$TODAY" && { echo "worker is fresh"; exit 0; }
             sleep 30
           done
-          echo "WARNING: worker not fresh yet — check /api/health later"
+          echo "WARNING: worker not fresh yet - check /api/health later"
           exit 0
