@@ -56,7 +56,9 @@ jobs:
         with:
           name: provisoire-debug
           path: |
-            step-*.png
+            step-10-*-district-*.png
+            !step-10-*-district-*-MISS.png
+            step-*-10-applicant.png
             result.json
             options-*.json
             home-dump-*.html
