@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       id_number:
-        description: "ID to check (leave empty to use secret IREMBO_ID or the default)"
+        description: "ID to check (leave empty to use the IREMBO_ID secret)"
         required: false
         default: ""
       district:
