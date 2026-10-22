@@ -15,7 +15,7 @@
 const OWNER = 'hervecoder';
 const REPO = 'provisoire-code-checker';
 const WF = 'provisoire-check.yml';
-const DISTRICTS = ['nyamasheke', 'nyarugenge', 'kicukiro'];
+const DISTRICTS = ['bugesera', 'burera', 'gakenke', 'gasabo', 'gatsibo', 'gicumbi', 'gisagara', 'huye', 'kamonyi', 'karongi', 'kayonza', 'kicukiro', 'kirehe', 'muhanga', 'musanze', 'ngoma', 'ngororero', 'nyabihu', 'nyagatare', 'nyamagabe', 'nyamasheke', 'nyanza', 'nyarugenge', 'nyaruguru', 'rubavu', 'ruhango', 'rulindo', 'rusizi', 'rutsiro', 'rwamagana'];
 const SHOT_CACHE_SECONDS = 300;
 
 // ---------------------------------------------------------------------------
@@ -45,29 +45,35 @@ function parseSlots(text) {
   return rows;
 }
 
-function organize(raw) {
-  const src = raw || {};
-  const out = {
-    checked_at: src.finished_at || null,
-    steps: Array.isArray(src.steps) ? src.steps : [],
-    error: src.error || null,
-    verify_error: src.verify_error || null,
-    districts: {},
-  };
+const EXAM_TYPES = ['mudasobwa', 'impapuro'];
+function validType(t) {
+  return t === 'impapuro' ? 'impapuro' : 'mudasobwa';
+}
+
+function organizeDistricts(districtsSrc) {
+  const out = { districts: {} };
   let total = 0;
   let withSlots = 0;
   for (const key of DISTRICTS) {
-    const D = (src.districts || {})[key] || {};
-    const text = D.text || src.slot_text || '';
-    const rows = parseSlots(text);
+    const D = (districtsSrc || {})[key] || {};
+    const text = D.text || '';
+    // `rows` is produced by check.mjs from the live page and is the source of
+    // truth. Older snapshots only have the truncated `text`, so keep the
+    // parser as a fallback.
+    const parsedRows = Array.isArray(D.rows) ? D.rows.filter((r) => r && typeof r === 'object') : [];
+    const rows = parsedRows.length ? parsedRows : parseSlots(text);
     const none = /nta myanya/i.test(text);
-    const count = rows.reduce((a, r) => a + r.slots, 0);
+    const count = rows.reduce((a, r) => a + Number(r.slots || 0), 0);
     out.districts[key] = {
       slots: rows.length > 0,
       count,
       rows,
       error: D.error || null,
-      note: none ? 'Nta myanya yabonetse' : rows.length ? rows.length + ' amasaha afite imyanya' : 'Nta makuru',
+      note: none
+        ? 'Nta myanya yabonetse'
+        : rows.length
+          ? rows.length + ' amasaha afite imyanya'
+          : 'Ntago nabashije kubona amakuru, wongere ugerageze nyuma.',
     };
     if (rows.length > 0) withSlots += 1;
     total += count;
@@ -75,6 +81,29 @@ function organize(raw) {
   out.districts_with_slots = withSlots;
   out.total_slots = total;
   return out;
+}
+
+function organize(raw) {
+  const src = raw || {};
+  const base = {
+    checked_at: src.finished_at || null,
+    steps: Array.isArray(src.steps) ? src.steps : [],
+    error: src.error || null,
+    verify_error: src.verify_error || null,
+  };
+  // New shape: result.json carries types.{mudasobwa,impapuro}.districts.
+  // Legacy shape (districts at top level) counts as mudasobwa.
+  const legacy = src.districts || {};
+  const types = {};
+  for (const t of EXAM_TYPES) {
+    const meta = (src.types && src.types[t]) || {};
+    const typed = meta.districts || (t === 'mudasobwa' ? legacy : {});
+    types[t] = organizeDistricts(typed);
+    types[t].no_districts = meta.no_districts || null;
+    types[t].district_names = Array.isArray(meta.district_names) ? meta.district_names : [];
+  }
+  // Top-level districts stay mudasobwa for back-compat (old apps + HTML page).
+  return { ...base, types, districts: types.mudasobwa.districts, districts_with_slots: types.mudasobwa.districts_with_slots, total_slots: types.mudasobwa.total_slots };
 }
 
 // ---------------------------------------------------------------------------
@@ -116,9 +145,17 @@ export default {
         });
       }
 
+      if (req.method === 'GET' && url.pathname === '/api/config') {
+        return Response.json(slotsAppConfig(), {
+          headers: { 'access-control-allow-origin': '*', 'cache-control': 'public, max-age=300' },
+        });
+      }
+
       if (req.method === 'GET' && url.pathname === '/api/result') {
         try {
-          return Response.json(await readResult(), {
+          const t = validType(url.searchParams.get('t'));
+          const full = await readResult();
+          return Response.json({ checked_at: full.checked_at, type: t, ...full.types[t] }, {
             headers: { 'access-control-allow-origin': '*', 'cache-control': 'no-store' },
           });
         } catch (e) {
@@ -143,7 +180,9 @@ export default {
       if (req.method === 'GET' && url.pathname === '/api/shot') {
         const d = (url.searchParams.get('d') || '').toLowerCase();
         if (!DISTRICTS.includes(d)) return new Response('bad district', { status: 400 });
-        const r = await gh(`/repos/${OWNER}/${REPO}/contents/shots/${d}.png?ref=main`);
+        const t = validType(url.searchParams.get('t'));
+        const shotName = t === 'impapuro' ? `${d}-impapuro.png` : `${d}.png`;
+        const r = await gh(`/repos/${OWNER}/${REPO}/contents/shots/${shotName}?ref=main`);
         if (!r.ok) return new Response('no shot yet', { status: 404 });
         const j = await r.json();
         const bin = Uint8Array.from(atob(j.content.replace(/\n/g, '')), (c) => c.charCodeAt(0));
@@ -172,10 +211,31 @@ export default {
   },
 };
 
+// Remote config served to the app. Keep this at top level: /api/config calls
+// it directly, and the app requires typeMudasobwa/typeImpapuro text keys.
+function slotsAppConfig() {
+  return {
+    version: 2,
+    districts: [['bugesera', 'Bugesera'], ['burera', 'Burera'], ['gakenke', 'Gakenke'], ['gasabo', 'Gasabo'], ['gatsibo', 'Gatsibo'], ['gicumbi', 'Gicumbi'], ['gisagara', 'Gisagara'], ['huye', 'Huye'], ['kamonyi', 'Kamonyi'], ['karongi', 'Karongi'], ['kayonza', 'Kayonza'], ['kicukiro', 'Kicukiro'], ['kirehe', 'Kirehe'], ['muhanga', 'Muhanga'], ['musanze', 'Musanze'], ['ngoma', 'Ngoma'], ['ngororero', 'Ngororero'], ['nyabihu', 'Nyabihu'], ['nyagatare', 'Nyagatare'], ['nyamagabe', 'Nyamagabe'], ['nyamasheke', 'Nyamasheke'], ['nyanza', 'Nyanza'], ['nyarugenge', 'Nyarugenge'], ['nyaruguru', 'Nyaruguru'], ['rubavu', 'Rubavu'], ['ruhango', 'Ruhango'], ['rulindo', 'Rulindo'], ['rusizi', 'Rusizi'], ['rutsiro', 'Rutsiro'], ['rwamagana', 'Rwamagana']],
+    texts: {
+      listIntro: 'Dore uturere dufite code zihari. Kanda ku karere ushaka kureba imyanya irimo.',
+      noInternet: 'Nta internet ihari. Banza uhuze internet hanyuma wongere ugerageze.',
+      detailCaption: 'Ngiyi ifoto igaragaza imyanya ihari.',
+      narangijePrompt: "Wabonye code zihari. Kanda Narangije usubire ku rutonde rw'uturere.",
+      typePrompt: 'Hitamo uburyo ukoresha ikizamini cya provisoire:',
+      offNotice: 'Iyi serivisi ntabwo ihari ubu. Ongera ugaruke nyuma.',
+      typeMudasobwa: 'Gukorera kuri Mudasobwa',
+      typeImpapuro: 'Gukorera ku Impapuro',
+      types: { mudasobwa: 'Mudasobwa', impapuro: 'Impapuro' },
+    },
+  };
+}
+
 // Renders the dynamic body (#app). Self-contained on purpose: the same source
 // is inlined into the page for client-side re-rendering after a refresh.
 function renderBody(data) {
-  var LIST = [['nyamasheke', 'Nyamasheke'], ['nyarugenge', 'Nyarugenge'], ['kicukiro', 'Kicukiro']];
+  var LIST = [['bugesera', 'Bugesera'], ['burera', 'Burera'], ['gakenke', 'Gakenke'], ['gasabo', 'Gasabo'], ['gatsibo', 'Gatsibo'], ['gicumbi', 'Gicumbi'], ['gisagara', 'Gisagara'], ['huye', 'Huye'], ['kamonyi', 'Kamonyi'], ['karongi', 'Karongi'], ['kayonza', 'Kayonza'], ['kicukiro', 'Kicukiro'], ['kirehe', 'Kirehe'], ['muhanga', 'Muhanga'], ['musanze', 'Musanze'], ['ngoma', 'Ngoma'], ['ngororero', 'Ngororero'], ['nyabihu', 'Nyabihu'], ['nyagatare', 'Nyagatare'], ['nyamagabe', 'Nyamagabe'], ['nyamasheke', 'Nyamasheke'], ['nyanza', 'Nyanza'], ['nyarugenge', 'Nyarugenge'], ['nyaruguru', 'Nyaruguru'], ['rubavu', 'Rubavu'], ['ruhango', 'Ruhango'], ['rulindo', 'Rulindo'], ['rusizi', 'Rusizi'], ['rutsiro', 'Rutsiro'], ['rwamagana', 'Rwamagana']];
+
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -205,7 +265,7 @@ function renderBody(data) {
   }
 
   if (!data || !data.districts) {
-    return '<div class="empty">Nta makuru abonetse. Kanda <b>Reba</b> hejuru kugenzura imyanya.</div>';
+    return '<div class="empty">Ntago nabashije kubona amakuru, wongere ugerageze nyuma. Kanda <b>Reba</b> hejuru wongere ugerageze.</div>';
   }
 
   var ver = encodeURIComponent(data.checked_at || '');
@@ -223,7 +283,7 @@ function renderBody(data) {
 
   function rowsHtml(D) {
     if (!D.rows || !D.rows.length) {
-      return '<div class="noRows">' + esc(D.error || D.note || 'Nta myanya') + '</div>';
+      return '<div class="noRows">' + esc(D.note || 'Ntago nabashije kubona amakuru, wongere ugerageze nyuma.') + '</div>';
     }
     var h = '<table><thead><tr><th>Itariki</th><th>Aho</th><th>Igihe</th><th class="num">Imyanya</th></tr></thead><tbody>';
     D.rows.forEach(function (r) {
@@ -246,7 +306,7 @@ function renderBody(data) {
     var key = pair[0], name = pair[1];
     var D = data.districts[key] || {};
     var state = D.error ? 'err' : D.slots ? 'yes' : 'no';
-    var label = D.error ? 'Ikosa' : D.slots ? 'Imyanya ihari' : 'Nta myanya';
+    var label = D.error ? 'Ntago byabashije' : D.slots ? 'Imyanya ihari' : 'Nta myanya';
     return (
       '<article class="card">' +
         '<div class="cardHead">' +
