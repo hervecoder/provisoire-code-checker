@@ -535,12 +535,35 @@ async function runType(typeCfg) {
       } catch {}
 
       out.districts = {};
-      if (Array.isArray(out._dropdownNames) && out._dropdownNames.length) {
-        const live = typeKeys.filter((k) => out._dropdownNames.some((n) => String(n).toLowerCase().includes(k)));
+      const offeredNames = (Array.isArray(out._dropdownNames) ? out._dropdownNames : [])
+        .map((n) => String(n || '').trim())
+        .filter((n) => n && !/no items found/i.test(n));
+      out.district_names = offeredNames;
+      if (offeredNames.length) {
+        // In a full sweep the live dropdown is authoritative (it can add a new
+        // district), but single-district mode must stay restricted to one.
+        const allowed = new Set(ONLY_DISTRICT ? typeKeys : DISTRICT_KEYS);
+        const live = [...new Set(offeredNames
+          .map((n) => {
+            const s = n.toLowerCase();
+            return DISTRICT_KEYS.find((k) => s === k) || DISTRICT_KEYS.find((k) => s.includes(k));
+          })
+          .filter(Boolean))]
+          .filter((k) => allowed.has(k));
         if (live.length) {
-          if (live.length !== typeKeys.length) console.log(`[${typeKey}] live dropdown trims ${typeKeys.length} -> ${live.length}: ` + live.join(','));
+          if (live.length !== typeKeys.length) {
+            console.log(`[${typeKey}] live dropdown selects ${live.length} districts: ` + live.join(','));
+          }
           typeKeys = live;
+        } else {
+          out.no_districts = 'Irembo ntabwo yerekanye uturere dushobora kugenzura kuri iyi serivisi.';
+          typeKeys = [];
+          console.log(`[${typeKey}] no matching live districts; skipping the district loop.`);
         }
+      } else if (Array.isArray(out._dropdownNames)) {
+        out.no_districts = 'Irembo ntabwo yerekanye uturere kuri iyi serivisi.';
+        typeKeys = [];
+        console.log(`[${typeKey}] district dropdown is empty; skipping the district loop.`);
       }
       for (const { key, re } of typeKeys.map((k) => ({ key: k, re: new RegExp(k, 'i') }))) {
         try {
@@ -571,12 +594,25 @@ async function runType(typeCfg) {
           const m = slotText.match(/imyanya[^\n]{0,120}/gi) || slotText.match(/nta mwanya[^\n]{0,120}/gi) || [];
           // Worker-grade row pattern (date/center/time/count across lines).
           const rows = [];
-          const rowRe = /(\d{2}-\d{2}-\d{4})\s*\n([^\n]+)\n([^\n]*?\d{1,2}:\d{2}\s*(?:AM|PM)[^\n]*)\n(?:Imyanya|Umwanya)\s*\n(\d+)/gi;
+          const rowRe = /(\d{2}-\d{2}-\d{4})\s*\n([^\n]+)\n([^\n]*?\d{1,2}:\d{2}\s*(?:AM|PM|A\.M\.|P\.M\.)[^\n]*)\n(?:Imyanya|Umwanya)\s*\n(\d+)/gi;
           let rm;
           while ((rm = rowRe.exec(slotText)) && rows.length < 20) {
             rows.push({ date: rm[1], center: rm[2].trim(), time: rm[3].trim(), slots: Number(rm[4]) });
           }
-          out.districts[key] = { imyanya: m.slice(0, 10), rows, has_slots: rows.length > 0, text: scrub(slotText).slice(0, 1500) };
+          const safeText = scrub(slotText);
+          out.districts[key] = {
+            imyanya: m.slice(0, 10),
+            rows,
+            has_slots: rows.length > 0,
+            // Keep the whole district text: the old 1,500-character cap hid
+            // rows from the worker and made true counts look smaller.
+            text: safeText.slice(0, 50000),
+            text_truncated: safeText.length > 50000,
+          };
+          if (!rows.length && /(?:Imyanya|Umwanya)\s*\n\s*\d+/i.test(slotText)) {
+            out.districts[key].warning = 'page contains slot text but no rows were parsed';
+            console.log(`[${typeKey}] ${key} WARNING: slot text present but rows=0`);
+          }
           console.log(`[${typeKey}] ${key} IMYANYA rows=${rows.length}`);
         } catch (eD) {
           out.districts[key] = { error: String(eD.message).slice(0, 200) };
@@ -626,6 +662,8 @@ for (const typeCfg of EXAM_TYPES) {
   const part = await runType(typeCfg);
   finalOut.types[typeCfg.key] = {
     districts: part.districts || {},
+    district_names: part.district_names || [],
+    no_districts: part.no_districts || null,
     slot_text: part.slot_text || '',
     imyanya: part.imyanya || [],
     has_slots: !!part.has_slots,
