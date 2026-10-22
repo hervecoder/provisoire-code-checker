@@ -64,6 +64,8 @@ const EXAM_TYPES = [
 ];
 
 const NAME = 'Herve';
+const SURNAME = 'NDATIMANA';
+const FULL_NAME = `${SURNAME} ${NAME}`;
 const DOB = '28/12/2004'; // dd/mm/yyyy
 
 if (!ID) {
@@ -72,8 +74,15 @@ if (!ID) {
 }
 console.log(`Checking ID ending ...${ID.slice(-4)}`);
 
-// Scrub the applicant ID out of any saved text (result.json is public).
-const scrub = (s) => String(s || '').split(ID).join('[hidden]');
+// result.json is public. Redact every applicant detail, not just the ID.
+// The page text repeats the name on each step, so replace the longest form
+// first and then the individual parts.
+const PRIVATE_TERMS = [ID, FULL_NAME, SURNAME, NAME, DOB].filter(Boolean);
+const scrub = (s) => {
+  let out = String(s || '');
+  for (const term of PRIVATE_TERMS) out = out.split(term).join('[hidden]');
+  return out;
+};
 
 async function runType(typeCfg) {
   const { key: typeKey } = typeCfg;
@@ -94,40 +103,71 @@ async function runType(typeCfg) {
   const page = await ctx.newPage();
   const out = { steps: [] };
 
-  // Viewport-clipped district screenshot: scroll the slot table into view,
-  // then cut the top 30% (applicant/ID header) so the ID never ships.
-  // NOTE: clipping alone is NOT enough — the applicant block sits mid-page.
-  // So first scrub the ID out of the DOM (inputs + summary spans), then take
-  // a full-page shot: slots fully visible, ID nowhere.
+  // Full-page district screenshot with the applicant card removed. Hiding
+  // only the ID leaf was not enough: the card also showed the applicant's
+  // name and the ID in a sibling text node, and those shots are public.
   async function clippedDistrictShot(key) {
     try {
-      await page.evaluate((idNum) => {
-        // 1) Blank any input holding a long digit string (the ID field).
+      await page.evaluate((privateValues) => {
+        const [idNum, fullName, surname, firstName] = privateValues;
+        // 1) Blank inputs holding the ID or the applicant's name.
         document.querySelectorAll('input').forEach((inp) => {
           try {
             const v = inp.value || '';
-            if (v.replace(/\D/g, '').length >= 10) inp.value = '';
+            if (
+              v.replace(/\D/g, '').length >= 10 ||
+              (fullName && v.includes(fullName)) ||
+              (surname && v.includes(surname)) ||
+              (firstName && v.includes(firstName))
+            ) inp.value = '';
           } catch {}
         });
-        // 2) Hide ONLY leaf elements whose own text contains the ID (the
-        // name/number display lines). Never hide ancestors: climbing up once
-        // blanked the whole form (Akarere dropdown + slot table) and failed
-        // every district picked after the first.
+        // 2) Find the "Amakuru Y'usaba" heading and hide its smallest ancestor
+        // that also contains the ID/full name. The slot form is a sibling card,
+        // so it stays visible.
+        const all = Array.from(document.querySelectorAll('body *'));
+        const heading = all
+          .filter((el) => /amakuru\s+y.?usaba/i.test(el.innerText || ''))
+          .sort((a, b) => a.querySelectorAll('*').length - b.querySelectorAll('*').length)[0];
+        if (heading) {
+          let node = heading;
+          let target = null;
+          for (let i = 0; i < 8 && node.parentElement; i++) {
+            node = node.parentElement;
+            const t = node.innerText || '';
+            if (t.includes(idNum) || (fullName && t.includes(fullName))) {
+              target = node;
+              break;
+            }
+          }
+          (target || heading).style.display = 'none';
+        }
+        // 3) Hide any remaining leaf that still shows the ID or full name.
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
         let el = null;
-        const hide = [];
         while ((el = walker.nextNode())) {
           try {
-            const t = el.innerText || '';
             if (el.children.length !== 0) continue;
-            if (t && t.includes(idNum)) hide.push(el);
+            const t = el.innerText || '';
+            if (t && (t.includes(idNum) || (fullName && t.includes(fullName)) || (surname && t.includes(surname)))) {
+              el.style.display = 'none';
+            }
           } catch {}
         }
-        hide.forEach((e) => {
-          e.style.display = 'none';
-        });
-      }, ID);
+      }, [ID, FULL_NAME, SURNAME, NAME]);
       await sleep(700);
+      // Hard gate: never write a public screenshot while any private value is
+      // still visible in page text or an input value.
+      const leak = await page.evaluate((privateValues) => {
+        const [idNum, fullName, surname] = privateValues;
+        const text = document.body.innerText || '';
+        const inputs = Array.from(document.querySelectorAll('input')).map((i) => i.value || '').join('\n');
+        return [idNum, fullName, surname].some((v) => v && (text.includes(v) || inputs.includes(v)));
+      }, [ID, FULL_NAME, SURNAME]);
+      if (leak) {
+        console.log(`[${typeKey}] ${key} SCRUB-LEAK: private value still visible`);
+        return false;
+      }
       // Sanity: the form must still be readable after scrubbing. If the
       // Akarere picker is gone, the scrub broke the DOM — refuse the shot.
       try {
