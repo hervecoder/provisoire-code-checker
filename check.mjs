@@ -103,10 +103,9 @@ async function runType(typeCfg) {
   const page = await ctx.newPage();
   const out = { steps: [] };
 
-  // Full-page district screenshot with the applicant card removed. Hiding
-  // only the ID leaf was not enough: the card also showed the applicant's
-  // name and the ID in a sibling text node, and those shots are public.
-  async function clippedDistrictShot(key) {
+  // Remove the applicant card and any visible ID/name from the DOM. Used
+  // before every debug/public screenshot so no private value can ship.
+  async function scrubPrivate(label = '') {
     try {
       await page.evaluate((privateValues) => {
         const [idNum, fullName, surname, firstName] = privateValues;
@@ -165,11 +164,22 @@ async function runType(typeCfg) {
         return [idNum, fullName, surname].some((v) => v && (text.includes(v) || inputs.includes(v)));
       }, [ID, FULL_NAME, SURNAME]);
       if (leak) {
-        console.log(`[${typeKey}] ${key} SCRUB-LEAK: private value still visible`);
+        console.log(`[${typeKey}] ${label} SCRUB-LEAK: private value still visible`);
         return false;
       }
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  // Full-page district screenshot with the applicant card removed. The shot
+  // is refused if the scrub gate detects any remaining ID/name.
+  async function clippedDistrictShot(key) {
+    try {
+      if (!(await scrubPrivate(key))) return false;
       // Sanity: the form must still be readable after scrubbing. If the
-      // Akarere picker is gone, the scrub broke the DOM — refuse the shot.
+      // Akarere picker is gone, the scrub broke the DOM - refuse the shot.
       try {
         const sanity = await page.evaluate(() => document.body.innerText || '').catch(() => '');
         if (!/akarere/i.test(sanity)) {
@@ -676,7 +686,12 @@ async function runType(typeCfg) {
       } catch (eN) {
         out.applicant_error = String(eN.message).slice(0, 300);
       }
-      await page.screenshot({ path: `${tag('10-applicant')}.png`, fullPage: true });
+      const applicantSafe = await scrubPrivate('applicant');
+      if (applicantSafe) {
+        await page.screenshot({ path: `${tag('10-applicant')}.png`, fullPage: true });
+      } else {
+        console.log(`[${typeKey}] applicant screenshot skipped: private value still visible`);
+      }
       out.steps.push('applicant-handled');
     } catch (e3) {
       out.applicant_error = String(e3.message).slice(0, 300);
