@@ -17,8 +17,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ID defaults to the owner's number; override with the IREMBO_ID secret or a
 // workflow_dispatch id_number input when needed.
-const DEFAULT_ID = '1200480003683096';
-const ID = (process.env.INPUT_ID || process.env.IREMBO_ID || DEFAULT_ID).trim();
+// Never hardcode the applicant ID: this repo is public. Scheduled runs use the
+// IREMBO_ID Actions secret; manual runs may pass the workflow_dispatch input.
+const ID = (process.env.INPUT_ID || process.env.IREMBO_ID || '').trim();
 
 // Per-type district lists, verified against Irembo's own Akarere dropdown on
 // 2026-10-09 (dropdown dump, run 37905963666). Districts Irembo does not list
