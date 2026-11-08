@@ -592,7 +592,7 @@
               "date": "09-11-2026",
               "center": "NGORORERO EXAMINATION CENTER (NGR)",
               "time": "4:00 PM - 5:00 PM",
-              "slots": 13
+              "slots": 12
             },
             {
               "date": "10-11-2026",
@@ -1822,7 +1822,7 @@
           "date": "09-11-2026",
           "center": "NGORORERO EXAMINATION CENTER (NGR)",
           "time": "4:00 PM - 5:00 PM",
-          "slots": 13
+          "slots": 12
         },
         {
           "date": "10-11-2026",
